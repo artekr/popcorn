@@ -9,10 +9,8 @@ import { ExceptionService } from './exception.service';
     CommonModule
   ],
   declarations: [
-    ApiService,
-    ExceptionService
   ],
-  exports: [
+  providers: [
     ApiService,
     ExceptionService
   ]
