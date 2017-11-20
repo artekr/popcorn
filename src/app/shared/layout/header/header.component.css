@@ -1,7 +1,12 @@
 #nav-wrapper {
     background-color: #fff;
-    padding:5px 100px;
     box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
+}
+
+#nav-wrapper .container {
+    height: 56px;
+    align-items: center;
+    padding:0 16px;
 }
 
 #nav-wrapper a {
@@ -23,6 +28,6 @@
 
 .search-bar {
     height: 34px;
-    width: 50%;
-    margin: 5px 20px;
+    /* width: 50%; */
+    margin: 0px 25px;
 }
