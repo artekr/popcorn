@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { EntriesModule } from './entries/entries.module';
-import { CoreModule } from './core/core.module';
-
+import { HomeModule } from './home/home.module';
 import { 
   HeaderComponent,
   FooterComponent,
@@ -18,14 +18,15 @@ import {
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    EntriesModule,
     CoreModule,
-    SharedModule
+    EntriesModule,
+    HomeModule,
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

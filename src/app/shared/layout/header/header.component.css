@@ -1,27 +1,28 @@
-.nav-wrapper {
+#nav-wrapper {
     background-color: #fff;
     padding:5px 100px;
     box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
 }
 
-.nav-wrapper a {
-    color: #8590a6 !important;
+#nav-wrapper a {
+    color: #8590a6;
 }
 
-/* .nav-wrapper a.active {
-    color: #212121 !important;
-} */
+#nav-wrapper a:hover {
+    background-color: transparent;
+}
+
+#nav-wrapper a.active {
+    background-color: transparent;
+    color: #212121;
+}
+
+#nav-wrapper a.nav-logo {
+    padding: 0px;
+}
 
 .search-bar {
     height: 34px;
     width: 50%;
     margin: 5px 20px;
-}
-
-.ui.secondary.menu a.nav-logo:hover {
-    background-color: transparent;
-}
-
-.ui.secondary.menu a.nav-logo {
-    padding: 0px;
 }

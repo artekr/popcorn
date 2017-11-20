@@ -1,15 +1,15 @@
-<div class="nav-wrapper">
+<div id="nav-wrapper">
   <div class="ui secondary menu container">
-    <a class="nav-logo item" href="/">
+    <a class="nav-logo item" routerLink="/" routerLinkActive="active">
       <img src="/assets/images/nav_logo.png">
     </a>
-    <a class="active item">
+    <a class="item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       首页
     </a>
-    <a class="item">
+    <a class="item" routerLink="/hot" routerLinkActive="active">
       热门发现
     </a>
-    <a class="item">
+    <a class="item" routerLink="/discovery" routerLinkActive="active">
       随便看看
     </a>
     <div class="ui left icon action input search-bar">
