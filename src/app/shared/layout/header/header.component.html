@@ -4,20 +4,23 @@
       <img src="/assets/images/nav_logo.png">
     </a>
     <a class="item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="home icon"></i>
       首页
     </a>
     <a class="item" routerLink="/hot" routerLinkActive="active">
+      <i class="fire icon"></i>
       热门发现
     </a>
     <a class="item" routerLink="/discovery" routerLinkActive="active">
+      <i class="world icon"></i>
       随便看看
     </a>
-    <div class="ui left icon action input search-bar">
-      <i class="search icon"></i>
-      <input type="text" placeholder="奇怪的词">
-      <div class="ui blue submit button">搜索</div>
-    </div>
     <div class="right menu">
+    <div class="ui left icon action input search-bar">
+        <i class="search icon"></i>
+        <input type="text" placeholder="奇怪的词">
+        <div class="ui blue submit button">搜索</div>
+      </div>
       <a class="ui item">
         登录
       </a>
