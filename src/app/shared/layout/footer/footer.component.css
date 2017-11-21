@@ -1,0 +1,38 @@
+footer {
+  color: #8590a6;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.footer-social {
+    display: block;
+}
+
+.footer-social a {
+    font-size: 18px;
+    color: inherit;
+    display: inline-block;
+}
+
+.footer-nav ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-nav-list {
+  display: block;
+}
+
+.footer-nav-list li {
+  display: inline-block;
+}
+
+.footer-nav-list li a {
+  color: inherit;
+}
+
+.footer-nav-dot::after {
+  content: "\00B7";
+  margin: 0 .25em;
+}
