@@ -9,7 +9,6 @@ import { EntriesModule } from './entries/entries.module';
 import { HomeModule } from './home/home.module';
 import { 
   HeaderComponent,
-  FooterComponent,
   SharedModule 
 } from './shared';
 
@@ -17,8 +16,7 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
