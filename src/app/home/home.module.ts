@@ -7,6 +7,10 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { HotComponent } from './hot/hot.component';
 import { MainComponent } from './main/main.component';
 import { 
+  EntryComponent,
+  EntryListComponent
+} from '../entries';
+import { 
   FooterComponent,
   SidebarRightComponent
 } from '../shared';
@@ -22,7 +26,9 @@ import {
     HotComponent,
     MainComponent,
     FooterComponent,
-    SidebarRightComponent
+    SidebarRightComponent,
+    EntryComponent,
+    EntryListComponent
   ]
 })
 export class HomeModule { }
