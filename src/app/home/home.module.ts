@@ -6,6 +6,10 @@ import { HomeComponent } from './home.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
 import { HotComponent } from './hot/hot.component';
 import { MainComponent } from './main/main.component';
+import { 
+  FooterComponent,
+  SidebarRightComponent
+} from '../shared';
 
 @NgModule({
   imports: [
@@ -16,7 +20,9 @@ import { MainComponent } from './main/main.component';
     HomeComponent,
     DiscoveryComponent,
     HotComponent,
-    MainComponent
+    MainComponent,
+    FooterComponent,
+    SidebarRightComponent
   ]
 })
 export class HomeModule { }
