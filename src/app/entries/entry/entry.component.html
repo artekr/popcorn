@@ -1,3 +1,61 @@
-<p>
-  entry works! {{entry.name}}
-</p>
+<div class="ui link fluid card entry-card">
+  <div class="content">
+    <div class="header">
+      <a href="">{{entry.name}}</a>
+    </div>
+    <div class="meta">
+      <a>User Name</a>
+      <span class="span-dot"></span>
+      <span>2 days ago</span>
+    </div>
+    <div class="description">
+      <div class="entry-definition">
+        <span>释义</span>
+        <p>{{entry.definition}}</p>
+      </div>
+      <div class="entry-example">
+        <span>例句</span>
+        <p>
+          {{entry.example}}
+        </p>
+      </div>
+      <div class="entry-tags">
+        <!-- <i class="tags icon"></i> -->
+        <a class="ui mini blue label">娱乐</a>
+        <a class="ui mini blue label">八卦</a>
+        <a class="ui mini blue label">论坛</a>
+        <a class="ui mini blue label">网络用语</a>
+      </div>
+    </div>
+  </div>
+  <div class="extra">
+    <div class="ui very relaxed horizontal list">
+      <div class="item">
+        <a class="middle aligned content">
+          <i class="thumbs outline up icon"></i>
+          123
+        </a>
+        <a class="middle aligned content">
+          <i class="thumbs outline down icon"></i>
+          5
+        </a>
+      </div>
+      <div class="item">
+        <a class="middle aligned content">
+          <i class="comment outline icon"></i>
+          237
+        </a>
+      </div>
+      <div class="item">
+        <a class="middle aligned content">
+          <i class="send outline icon"></i>
+        </a>
+      </div>
+      <div class="item">
+        <a class="middle aligned content">
+          <i class="ellipsis horizontal icon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
