@@ -1,34 +1,25 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { EntriesModule } from '../entries';
+import { SharedModule } from '../shared';
+
 import { HomeComponent } from './home.component';
-import { DiscoveryComponent } from './discovery/discovery.component';
-import { HotComponent } from './hot/hot.component';
 import { MainComponent } from './main/main.component';
-import { 
-  EntryComponent,
-  EntryListComponent
-} from '../entries';
-import { 
-  FooterComponent,
-  SidebarRightComponent
-} from '../shared';
+import { HotComponent } from './hot/hot.component';
+import { DiscoveryComponent } from './discovery/discovery.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    EntriesModule,
+    SharedModule
   ],
   declarations: [
     HomeComponent,
-    DiscoveryComponent,
-    HotComponent,
     MainComponent,
-    FooterComponent,
-    SidebarRightComponent,
-    EntryComponent,
-    EntryListComponent
+    HotComponent,
+    DiscoveryComponent
   ]
 })
 export class HomeModule { }

@@ -4,10 +4,6 @@ import { CommonModule } from '@angular/common';
 import { EntriesComponent } from './entries.component';
 import { EntryComponent } from './entry/entry.component';
 import { EntryListComponent } from './entry-list/entry-list.component';
-import {
-  Entry,
-  EntryService
-} from './shared';
 
 @NgModule({
   imports: [
@@ -16,6 +12,9 @@ import {
   declarations: [
     EntriesComponent,
     EntryComponent,
+    EntryListComponent
+  ],
+  exports: [
     EntryListComponent
   ]
 })
