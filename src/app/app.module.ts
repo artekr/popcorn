@@ -6,16 +6,12 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
-import { 
-  HeaderComponent,
-  SharedModule 
-} from './shared';
+import { SharedModule } from './shared';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
