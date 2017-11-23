@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Entry } from '../../entries';
-import { ENTRIES } from '../../mock-entries';
+import { 
+  Entry,
+  EntryService
+} from '../../entries';
 
 @Component({
   selector: 'app-main',
@@ -12,11 +14,12 @@ import { ENTRIES } from '../../mock-entries';
 
 export class MainComponent implements OnInit {
 
-  entries: Entry[] = ENTRIES;
+  entries: Entry[];
 
-  constructor() { }
+  constructor(private entryService: EntryService) { }
 
   ngOnInit() {
+    this.entries = this.entryService.getEntries();
   }
 
 }

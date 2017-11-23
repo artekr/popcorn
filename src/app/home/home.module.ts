@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { EntriesModule } from '../entries';
 import { SharedModule } from '../shared';
+import { 
+  EntriesModule,
+  EntryService
+ } from '../entries';
 
 import { HomeComponent } from './home.component';
 import { MainComponent } from './main/main.component';
@@ -20,6 +23,9 @@ import { DiscoveryComponent } from './discovery/discovery.component';
     MainComponent,
     HotComponent,
     DiscoveryComponent
+  ],
+  providers: [
+    EntryService
   ]
 })
 export class HomeModule { }
