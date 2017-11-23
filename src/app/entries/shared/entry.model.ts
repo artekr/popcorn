@@ -1,6 +1,6 @@
 export class Entry {
     id: number;
-    name: string;
+    entry_name: string; //TODO: changed to 'name' in v3
     definition: string;
     example: string;
     status: string;
