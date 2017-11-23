@@ -19,7 +19,12 @@ export class MainComponent implements OnInit {
   constructor(private entryService: EntryService) { }
 
   ngOnInit() {
-    this.entries = this.entryService.getEntries();
+    this.queryEntries();
+  }
+
+  queryEntries(): void {
+    this.entryService.query()
+        .subscribe(entries => this.entries = entries);
   }
 
 }
