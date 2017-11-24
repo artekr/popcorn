@@ -15,8 +15,8 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 @NgModule({
   imports: [
     HomeRoutingModule,
-    EntriesModule,
-    SharedModule
+    SharedModule,
+    EntriesModule
   ],
   declarations: [
     HomeComponent,

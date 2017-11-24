@@ -21,6 +21,7 @@ import {
   ],
   exports: [
     CommonModule,
+    HttpClientModule,
     HeaderComponent, 
     FooterComponent,
     SidebarRightComponent
