@@ -1,0 +1,17 @@
+.auth-wrapper .auth-header {
+    
+}
+
+.auth-wrapper .auth-header h1 {
+    font-size: 3.5em;
+}
+
+.auth-wrapper .auth-header .sub.header {
+    color: #8590a6;
+}
+
+.ui.list.third-party-login {
+    margin: 0px;
+    color: #8590a6;
+}
+

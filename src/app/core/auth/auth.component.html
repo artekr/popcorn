@@ -1,0 +1,73 @@
+<div class="auth-wrapper ui three column centered grid">
+  <div class="column">
+    <!-- Header section -->
+    <div class="ui basic segment auth-header">
+      <h1 class="ui center aligned blue header">
+        波普词典
+        <div class="sub header">一个开放的在线俚语词典</div>
+      </h1>
+    </div>
+    <!-- Login or Register section -->
+    <div class="auth-main ui stacked segment">
+      <!-- Login Form -->
+      <form class="ui form">
+        <div *ngIf="authType == 'register'" class="inline field">
+          <div class="ui fluid left icon input">
+            <i class="user icon"></i>
+            <input type="text" placeholder="用户名">
+          </div>
+        </div>
+        <div *ngIf="authType == 'register'" class="inline field">
+            <div class="ui fluid left icon input">
+              <i class="mail icon"></i>
+              <input type="text" placeholder="邮箱">
+            </div>
+          </div>
+        <div *ngIf="authType == 'login'" class="inline field">
+          <div class="ui fluid left icon input">
+            <i class="user icon"></i>
+            <input type="text" placeholder="邮箱/用户名">
+          </div>
+        </div>
+        <div class="inline field">
+          <div class="ui fluid left icon input">
+            <i class="lock icon"></i>
+            <input type="password" placeholder="密码">
+          </div>
+        </div>
+        <div *ngIf="authType == 'login'" class="field">
+          <div class="ui mini horizontal divided list">
+            <!-- <div class="item checkbox">
+              <input type="checkbox" tabindex="0" class="hidden middle aligned">
+              <label>下次自动登录</label>
+            </div> -->
+            <a class="item">
+              忘记密码？
+            </a>
+          </div>
+        </div>
+        <div class="ui fluid blue submit button">{{ title }}</div>
+      </form>
+      <div class="ui divider"></div>
+      <!-- Third party login segment -->
+      <div class="ui mini horizontal list third-party-login">
+        <label>第三方登录:</label>
+        <a class="item">
+          <img class="ui avatar image" src="/assets/images/weibo.png">
+        </a>
+        <a class="item">
+          <img class="ui avatar image" src="/assets/images/wechat.png">
+        </a>
+      </div>
+    </div>
+    <!-- Auth switch segment -->
+    <div *ngIf="authType == 'login'" class="auth-switch ui center aligned segment">
+      还没有波普账号？
+      <a class="" routerLink='/register'>立即注册</a>
+    </div>
+    <div *ngIf="authType == 'register'" class="auth-switch ui center aligned segment">
+      已经有了波普账号？
+      <a class="" routerLink='/login'>直接登录</a>
+    </div>
+  </div>
+</div>
