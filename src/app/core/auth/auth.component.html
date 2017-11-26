@@ -17,17 +17,11 @@
             <input type="text" placeholder="用户名">
           </div>
         </div>
-        <div *ngIf="authType == 'register'" class="inline field">
+        <div class="inline field">
             <div class="ui fluid left icon input">
               <i class="mail icon"></i>
               <input type="text" placeholder="邮箱">
             </div>
-          </div>
-        <div *ngIf="authType == 'login'" class="inline field">
-          <div class="ui fluid left icon input">
-            <i class="user icon"></i>
-            <input type="text" placeholder="邮箱/用户名">
-          </div>
         </div>
         <div class="inline field">
           <div class="ui fluid left icon input">
@@ -57,6 +51,9 @@
         </a>
         <a class="item">
           <img class="ui avatar image" src="/assets/images/wechat.png">
+        </a>
+        <a class="item">
+          <img class="ui avatar image" src="/assets/images/qq.png">
         </a>
       </div>
     </div>
