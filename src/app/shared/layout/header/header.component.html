@@ -16,17 +16,27 @@
       随便看看
     </a>
     <div class="right menu">
-    <div class="ui left icon action input search-bar">
-        <i class="search icon"></i>
-        <input type="text" placeholder="奇怪的词">
-        <div class="ui blue submit button">搜索</div>
+      <div class="item">
+        <div class="ui left icon action input search-bar">
+          <i class="search icon"></i>
+          <input type="text" placeholder="奇怪的词">
+          <div class="ui blue submit button">搜索</div>
+        </div>
       </div>
-      <a class="ui item">
-        登录
-      </a>
-      <a class="ui item">
-        注册
-      </a>
+      <div class="item">
+        <!-- Show this for logged out users -->
+        <div class="ui text menu">
+          <a class="item" routerLink="/login" routerLinkActive="active">
+            登录
+          </a>
+          <a class="item" routerLink="/register" routerLinkActive="active">
+            注册
+          </a>
+        </div>
+
+        <!-- Show this for logged in users -->
+        <!-- TODO -->
+      </div>
     </div>
   </div>
 </div>
