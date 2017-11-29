@@ -5,6 +5,8 @@ import { AuthModule } from "./auth/auth.module";
 import { ApiService } from './api.service';
 import { ExceptionService } from './exception.service';
 import { UserService } from './user.service';
+import { TokenService } from './token.service';
+import { Token } from '@angular/compiler';
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import { UserService } from './user.service';
   providers: [
     ApiService,
     ExceptionService,
-    UserService
+    UserService,
+    TokenService
   ]
 })
 export class CoreModule { }

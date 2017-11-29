@@ -10,23 +10,32 @@
     <!-- Login or Register section -->
     <div class="auth-main ui stacked segment">
       <!-- Login Form -->
-      <form class="ui form">
+      <form [formGroup]="authForm" (ngSubmit)="onSubmitForm()" class="ui form">
         <div *ngIf="authType == 'register'" class="inline field">
           <div class="ui fluid left icon input">
             <i class="user icon"></i>
-            <input type="text" placeholder="用户名">
+            <input 
+              formControlName="username"
+              type="text" 
+              placeholder="用户名">
           </div>
         </div>
         <div class="inline field">
             <div class="ui fluid left icon input">
               <i class="mail icon"></i>
-              <input type="text" placeholder="邮箱">
+              <input
+                formControlName="email"
+                type="text"
+                placeholder="邮箱">
             </div>
         </div>
         <div class="inline field">
           <div class="ui fluid left icon input">
             <i class="lock icon"></i>
-            <input type="password" placeholder="密码">
+            <input 
+              formControlName="password"
+              type="password" 
+              placeholder="密码">
           </div>
         </div>
         <div *ngIf="authType == 'login'" class="field">
@@ -40,7 +49,7 @@
             </a>
           </div>
         </div>
-        <div class="ui fluid blue submit button">{{ title }}</div>
+        <button type="submit" class="ui fluid blue button">{{ title }}</button>
       </form>
       <div class="ui divider"></div>
       <!-- Third party login segment -->
