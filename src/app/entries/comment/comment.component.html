@@ -1,0 +1,29 @@
+<div id="entry-comment">
+  <div class="ui small minimal comments fluid card">
+    <div class="content">
+      <div class="header">237 条评论</div>
+    </div>
+    <div class="extra content">
+      <div *ngFor="let comment of comments" class="comment">
+        <div class="content">
+          <a class="author">{{ comment.create_user.username }}</a>
+          <div class="metadata">
+            <span class="date">{{ comment.create_time }}</span>
+          </div>
+          <div class="text">
+            {{ comment.content }}
+          </div>
+          <div class="actions">
+            <a class="hide">举报</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="ui large transparent left icon input">
+        <i class="icon write"></i>
+        <input type="text" placeholder="Add Comment...">
+      </div>
+    </div>
+  </div>
+</div>
