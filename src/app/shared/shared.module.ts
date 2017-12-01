@@ -14,6 +14,7 @@ import {
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule,
     HttpClientModule
   ],
