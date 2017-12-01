@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
+import { ShowAuthedDirective } from '../core/auth/show-authed.directive';
+import { UserService } from '../core/user.service';
 import { 
   HeaderComponent, 
   FooterComponent,
@@ -18,7 +20,8 @@ import {
   declarations: [
     HeaderComponent, 
     FooterComponent,
-    SidebarRightComponent
+    SidebarRightComponent,
+    ShowAuthedDirective
   ],
   exports: [
     CommonModule,
@@ -27,7 +30,11 @@ import {
     HttpClientModule,
     HeaderComponent, 
     FooterComponent,
-    SidebarRightComponent
+    SidebarRightComponent,
+    ShowAuthedDirective
+  ],
+  providers: [
+    UserService
   ]
 })
 export class SharedModule { }

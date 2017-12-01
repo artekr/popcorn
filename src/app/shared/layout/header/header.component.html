@@ -25,7 +25,7 @@
       </div>
       <div class="item">
         <!-- Show this for logged out users -->
-        <div class="ui text menu">
+        <div *showAuthed="false" class="ui text menu">
           <a class="item" routerLink="/login" routerLinkActive="active">
             登录
           </a>
@@ -36,6 +36,12 @@
 
         <!-- Show this for logged in users -->
         <!-- TODO -->
+        <div *showAuthed="true" class="ui text menu">
+            <a class="item" routerLink="/" routerLinkActive="active">
+              <i class="icon user"></i>
+              User
+            </a>
+          </div>
       </div>
     </div>
   </div>

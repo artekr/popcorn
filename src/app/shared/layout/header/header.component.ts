@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { User } from '../../../core/user.model';
+import { UserService } from '../../../core/user.service';
+
 @Component({
   selector: 'layout-header',
   templateUrl: './header.component.html',
@@ -8,9 +11,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+
+  constructor(
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
+    this.userService.currentUser.subscribe(
+      (userData) => {
+        this.currentUser = userData;
+      }
+    )
   }
 
 }
