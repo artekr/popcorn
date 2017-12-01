@@ -1,5 +1,12 @@
-<p>
-  sidebar-right works!
-</p>
+<div class="ui fluid card hot-tags-card">
+  <div class="content">
+    <div class="header">热门标签</div>
+  </div>
+  <div class="content hot-tags-main">
+    <a *ngFor="let tag of hotTags" class="ui small blue label">
+      {{ tag.name }}
+    </a>
+  </div>
+</div>
 
 <layout-footer></layout-footer>
