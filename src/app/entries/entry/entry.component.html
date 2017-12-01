@@ -1,7 +1,8 @@
-<div class="ui link fluid card entry-card">
-  <div class="content">
+<div class="ui fluid card entry-card">
+  <div class="content entry-main">
     <div class="header">
-      <a href="">{{entry.name}}</a> <!-- TODO: changed to 'name' in v3 -->
+      <a href="">{{entry.name}}</a>
+      <!-- TODO: changed to 'name' in v3 -->
     </div>
     <div class="meta">
       <a>User Name</a>
@@ -21,14 +22,13 @@
       </div>
       <div class="entry-tags">
         <!-- <i class="tags icon"></i> -->
-        <a *ngFor="let tag of entry.tags"
-            class="ui mini blue label">
+        <a *ngFor="let tag of entry.tags" class="ui mini blue label">
           {{tag.name}}
         </a>
       </div>
     </div>
   </div>
-  <div class="extra">
+  <div class="extra entry-meta">
     <div class="ui very relaxed horizontal list">
       <div class="item">
         <a class="middle aligned content">
@@ -41,7 +41,7 @@
         </a>
       </div>
       <div class="item">
-        <a class="middle aligned content">
+        <a class="middle aligned content" (click)="this.showComment = !this.showComment">
           <i class="comment outline icon"></i>
           237
         </a>
@@ -58,4 +58,6 @@
       </div>
     </div>
   </div>
+  <app-comment *ngIf="showComment" [comments]="entry.comments"></app-comment>
+
 </div>

@@ -10,7 +10,7 @@
   transform:none;
 }
 
-.ui.entry-card .content {
+.ui.entry-card .entry-main {
   padding: 20px 20px 16px;
 }
 
@@ -39,8 +39,12 @@
   margin-top: 15px;
 }
 
-.ui.card.entry-card .extra {
-  padding: .5em 0;
+.ui.card.entry-card .entry-meta {
+  padding: 5px 16px;
+}
+
+.ui.card.entry-card .entry-meta .item a {
+  margin-right: 20px;
 }
 
 .entry-tags a,

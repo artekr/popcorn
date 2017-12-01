@@ -11,6 +11,8 @@ import { Entry } from '../shared/entry.model';
 export class EntryComponent implements OnInit {
   @Input() entry: Entry;
 
+  showComment: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
