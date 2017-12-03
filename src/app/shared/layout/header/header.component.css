@@ -27,7 +27,11 @@
 }
 
 .search-bar {
-    height: 34px;
+    height: 32px;
     /* width: 50%; */
     margin: 0px 25px;
+}
+
+.ui.button.add-entry {
+    padding: .65em 1em .65em !important;
 }
