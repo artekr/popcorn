@@ -3,6 +3,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from '../../../core/user.model';
 import { UserService } from '../../../core/user.service';
 
+declare var $: any;
+
 @Component({
   selector: 'layout-header',
   templateUrl: './header.component.html',
@@ -12,7 +14,7 @@ import { UserService } from '../../../core/user.service';
 export class HeaderComponent implements OnInit {
 
   currentUser: User;
-
+  
   constructor(
     private userService: UserService
   ) {}
@@ -25,4 +27,11 @@ export class HeaderComponent implements OnInit {
     )
   }
 
+  showAddEntryModal() {
+    $('.tiny.modal')
+    .modal({
+      blurring: true
+    })
+    .modal('show');
+  }
 }
