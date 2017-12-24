@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 
 import { ApiService } from './api.service';
-import { TokenService } from './token.service';
+import { JwtService } from './jwt.service';
 import { User } from './user.model';
 
 @Injectable()
@@ -23,12 +23,28 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private apiService: ApiService,
-    private tokenService: TokenService
+    private jwtService: JwtService
   ) { }
+
+  // Verify JWT in localstorage with server & load user's info.
+  // This runs once on application startup.
+  populate() {
+    // If JWT detected, attempt to get & store user's info
+    if (this.jwtService.getToken()) {
+      this.apiService.get('/user')
+      .subscribe(
+        data => this.setAuth(data.user),
+        err => this.purgeAuth()
+      );
+    } else {
+      // Remove any potential remnants of previous auth states
+      this.purgeAuth();
+    }
+  }
 
   setAuth(user: User) {
     // Save JWT sent from server in localstorage
-    this.tokenService.saveToken(user.token);
+    this.jwtService.saveToken(user.token);
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
@@ -37,7 +53,7 @@ export class UserService {
 
   purgeAuth() {
     // Remove JWT from localstorage
-    this.tokenService.destroyToken();
+    this.jwtService.destroyToken();
     // Set current user to an empty object
     this.currentUserSubject.next(new User());
     // Set auth status to false
