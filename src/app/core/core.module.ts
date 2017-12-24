@@ -5,7 +5,7 @@ import { AuthModule } from "./auth/auth.module";
 import { ApiService } from './api.service';
 import { ExceptionService } from './exception.service';
 import { UserService } from './user.service';
-import { TokenService } from './token.service';
+import { JwtService } from './jwt.service';
 import { Token } from '@angular/compiler';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { Token } from '@angular/compiler';
     ApiService,
     ExceptionService,
     UserService,
-    TokenService
+    JwtService
   ]
 })
 export class CoreModule { }
