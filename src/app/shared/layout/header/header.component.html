@@ -43,11 +43,17 @@
 
         <!-- Show this for logged in users -->
         <!-- TODO -->
-        <div *showAuthed="true" class="ui text menu">
-          <a class="item" routerLink="/" routerLinkActive="active">
-            <i class="icon user"></i>
-            {{currentUser.username}}
-          </a>
+        <div *showAuthed="true" class="ui item" (click)="showProfileDropdown()">
+          <div class="ui dropdown">
+            <span>{{currentUser.username}}</span>
+            <i class="icon dropdown"></i>
+            <div class="menu">
+              <div class="item">个人主页</div>
+              <div class="item">账号管理</div>
+              <div class="divider"></div>
+              <div class="item" (click)="logout()">退出</div>
+            </div>
+          </div>
         </div>
         <div class="item">
           <button class="ui blue button add-entry-modal" (click)="showAddEntryModal()">添加词条</button>

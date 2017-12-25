@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { User } from '../../../core/user.model';
 import { UserService } from '../../../core/user.service';
@@ -14,9 +15,11 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
 
   currentUser: User;
-  
+  dropdownIsShow: boolean = false;
+
   constructor(
-    private userService: UserService
+    private userService : UserService,
+    private router      : Router
   ) {}
 
   ngOnInit() {
@@ -34,4 +37,21 @@ export class HeaderComponent implements OnInit {
     })
     .modal('show');
   }
+
+  showProfileDropdown() {
+    if(this.dropdownIsShow) {
+      $('.ui.dropdown')
+      .dropdown('clear');
+    } else {
+      $('.ui.dropdown')
+      .dropdown('show');
+    }
+    this.dropdownIsShow = !this.dropdownIsShow;
+  }
+
+  logout() {
+    this.userService.purgeAuth();
+    this.router.navigateByUrl('/');
+  }
+
 }
