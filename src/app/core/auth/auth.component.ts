@@ -46,7 +46,9 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmitForm() {
-    this.authForm.patchValue({user_identity: this.authForm.get('email').value});
+    if (this.authType === 'register') {
+      this.authForm.patchValue({email: this.authForm.get('user_identity').value});
+    }
     const credentials = this.authForm.value;
     console.log(credentials);
     this.userService.attemptAuth(this.authType, credentials)
