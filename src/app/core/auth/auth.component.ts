@@ -32,20 +32,23 @@ export class AuthComponent implements OnInit {
       // add form control for username if this is the register page
       if (this.authType === 'register') {
         this.authForm.addControl('username', new FormControl());
+        this.authForm.addControl('email', new FormControl());
       }
     });
   }
 
   createForm() {
     this.authForm = this.fb.group({
-      'email'   : ['', Validators.required],
-      'password': ['', Validators.required]
+      auth_name    : ['EMAIL'],
+      user_identity: ['', Validators.required],
+      password     : ['', Validators.required]
     });
   }
 
   onSubmitForm() {
-    console.log("submit form");
+    this.authForm.patchValue({user_identity: this.authForm.get('email').value});
     const credentials = this.authForm.value;
+    console.log(credentials);
     this.userService.attemptAuth(this.authType, credentials)
       .subscribe(
         data => this.router.navigateByUrl('/')

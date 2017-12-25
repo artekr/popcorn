@@ -1,6 +1,6 @@
 export class User {
     id          : number;
-    token       : string;
+    jwt         : string;
     username    : string;
     email       : string;
     bio         : string;

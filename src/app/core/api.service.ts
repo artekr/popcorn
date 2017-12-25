@@ -21,8 +21,8 @@ export class ApiService {
   private setHeaders(): HttpHeaders {
     const headersConfig = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'time_zone': 'UTC-05:00'
+      'Accept'      : 'application/json',
+      'time_zone'   : 'UTC-05:00'
     };
 
     // TODO: check token

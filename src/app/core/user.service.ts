@@ -33,7 +33,7 @@ export class UserService {
     if (this.jwtService.getToken()) {
       this.apiService.get('/user')
       .subscribe(
-        data => this.setAuth(data.user),
+        data => this.setAuth(data),
         err => this.purgeAuth()
       );
     } else {
@@ -44,7 +44,7 @@ export class UserService {
 
   setAuth(user: User) {
     // Save JWT sent from server in localstorage
-    this.jwtService.saveToken(user.token);
+    this.jwtService.saveToken(user.jwt);
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
@@ -61,11 +61,11 @@ export class UserService {
   }
 
   attemptAuth(type, credentials): Observable<User> {
-    const route = (type === 'login') ? '/sign_in' : '';
-    return this.apiService.post('/users' + route, { user: credentials })
+    const route = (type === 'login') ? '/sign-in' : '';
+    return this.apiService.post('/users' + route, credentials)
       .map(
         data => {
-          this.setAuth(data.user);
+          this.setAuth(data);
           console.log(data);
           return data;
         }

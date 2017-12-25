@@ -5,14 +5,14 @@ export class JwtService {
   constructor() { }
 
   getToken(): string {
-    return '';
+    return window.localStorage['jwtToken'];
   }
 
   saveToken(token: string) {
-    
+    window.localStorage['jwtToken'] = token;
   }
 
   destroyToken() {
-    
+    window.localStorage.removeItem('jwtToken');
   }
 }
