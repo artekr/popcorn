@@ -1,3 +1,24 @@
-<p>
-  profile works!
-</p>
+<app-profile-header></app-profile-header>
+
+<div class="ui grid">
+  <div class="four wide column main-content">
+    <div class="ui segments">
+      <div class="ui blue segment">
+        <a class="item" routerLink="">我的词条</a>
+      </div>
+      <div class="ui blue segment">
+        <a class="item">我的评论</a>
+      </div>
+      <div class="ui blue segment">
+        <a class="item">我的单词本</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ten wide column main-content">
+    <router-outlet></router-outlet>
+    <p>
+      profile works!
+    </p>
+  </div>
+</div>

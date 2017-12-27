@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: 'app/about/about.module#AboutModule'
+  },
+  {
+    path: 'profile',
+    loadChildren: 'app/profile/profile.module#ProfileModule'
   }
 ];
 

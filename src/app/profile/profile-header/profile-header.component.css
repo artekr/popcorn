@@ -1,0 +1,12 @@
+.header-title {
+    font-weight: bold;
+    font-size: 35px;
+}
+.header-subtitle {
+    color:gray;
+}
+td {
+    padding-top: 05px;
+    padding-bottom: 05px;
+    padding-right: 15px;
+}

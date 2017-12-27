@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AboutModule } from './about/about.module';
     SharedModule,
     HomeModule,
     AboutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
