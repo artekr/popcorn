@@ -1,7 +1,6 @@
 import { Entry } from './entries';
 
-export const ENTRIES: Entry[] = [
-  {
+export const ENTRIES: Entry[] = [{
     "id": 1,
     "name": "B脸",
     "definition": "beautiful face的简称",
@@ -28,6 +27,7 @@ export const ENTRIES: Entry[] = [
         "create_time": "2017-09-23T21:22:01.499-04:00[UTC-04:00]",
         "create_user": {
           "id": 4,
+          "token":"",
           "username": "Heng",
           "email": "qihua@gmail.com",
           "bio": "xxxx xxxx xxxx xxxx",
@@ -38,6 +38,7 @@ export const ENTRIES: Entry[] = [
         "update_time": "2017-09-23T21:22:01.499-04:00[UTC-04:00]",
         "update_user": {
           "id": 4,
+          "token":"",
           "username": "Heng",
           "email": "qihua@gmail.com",
           "bio": "xxxx xxxx xxxx xxxx",
@@ -54,6 +55,7 @@ export const ENTRIES: Entry[] = [
           "create_user": {
               "id": 3,
               "username": "Yang",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -64,6 +66,7 @@ export const ENTRIES: Entry[] = [
           "update_user": {
               "id": 3,
               "username": "Yang",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -79,6 +82,7 @@ export const ENTRIES: Entry[] = [
           "create_user": {
               "id": 2,
               "username": "Qihua",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -89,6 +93,7 @@ export const ENTRIES: Entry[] = [
           "update_user": {
               "id": 2,
               "username": "Qihua",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -116,7 +121,7 @@ export const ENTRIES: Entry[] = [
         "name": "论坛",
         "status": "VALID"
       }
-    ],
+    ], 
     "comments": [
       {
         "id": 4,
@@ -126,6 +131,7 @@ export const ENTRIES: Entry[] = [
         "create_user": {
           "id": 4,
           "username": "Heng",
+          "token":"",
           "email": "qihua@gmail.com",
           "bio": "xxxx xxxx xxxx xxxx",
           "status": "VALID",
@@ -136,6 +142,7 @@ export const ENTRIES: Entry[] = [
         "update_user": {
           "id": 4,
           "username": "Heng",
+          "token":"",
           "email": "qihua@gmail.com",
           "bio": "xxxx xxxx xxxx xxxx",
           "status": "VALID",
@@ -151,6 +158,7 @@ export const ENTRIES: Entry[] = [
           "create_user": {
               "id": 3,
               "username": "Yang",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -161,6 +169,7 @@ export const ENTRIES: Entry[] = [
           "update_user": {
               "id": 3,
               "username": "Yang",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -176,6 +185,7 @@ export const ENTRIES: Entry[] = [
           "create_user": {
               "id": 2,
               "username": "Qihua",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",
@@ -186,6 +196,7 @@ export const ENTRIES: Entry[] = [
           "update_user": {
               "id": 2,
               "username": "Qihua",
+              "token":"",
               "email": "qihua@gmail.com",
               "bio": "xxxx xxxx xxxx xxxx",
               "status": "VALID",

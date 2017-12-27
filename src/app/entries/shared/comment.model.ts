@@ -7,5 +7,5 @@ export class Comment {
     create_time : string;
     create_user : User;
     update_time : string;
-    update_user : User
+    update_user : User;
 }

@@ -6,5 +6,5 @@ export class User {
     bio         : string;
     status      : string;
     create_time : string;
-    update_time : string
+    update_time : string;
 }
