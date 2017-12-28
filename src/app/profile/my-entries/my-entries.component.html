@@ -1,1 +1,45 @@
+
+<app-message [message]="message"></app-message>
+<br/>
+
 <app-entry-list [entries]="entries"></app-entry-list>
+
+<div class="ui pagination menu" ng-if="1 < pagination.totalItems || !autoHide">
+  <!-- left -->
+  <a class="icon item" ng-if="boundaryLinks" 
+     ng-class="{ disabled : pagination.currentPage == 1 }" 
+     href="" 
+     ng-click="setCurrent(1)">
+    <i class="angle double left icon"></i>
+  </a>
+  <a class="icon item" 
+     ng-if="directionLinks" 
+     ng-class="{ disabled : pagination.currentPage == 1 }" 
+     href="" 
+     ng-click="setCurrent(pagination.current - 1)">
+    <i class="left chevron icon"></i>
+  </a>
+
+  <!-- middle  -->
+  <a class="item" 
+     ng-repeat="pageNumber in pagination track by tracker(pageNumber, $index)" 
+     ng-class="{ active : pagination.currentPage == pageNumber, disabled : pageNumber == '...' }" 
+     href="" 
+     ng-click="setCurrent(pageNumber)">{{ pageNumber }}</a>
+     
+  <!-- right -->
+  <a class="icon item" 
+     ng-if="directionLinks" 
+     ng-class="{ disabled : pagination.current == pagination.last }" 
+     href="" 
+     ng-click="setCurrent(pagination.current + 1)">
+    <i class="right chevron icon"></i>
+  </a>
+  <a class="icon item" 
+     ng-if="boundaryLinks"  
+     ng-class="{ disabled : pagination.current == pagination.last }" 
+     href="" 
+     ng-click="setCurrent(pagination.last)">
+    <i class=" angle double right icon"></i>
+  </a>
+</div>

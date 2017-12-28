@@ -1,0 +1,6 @@
+<div *ngIf="message.content" class="ui {{ message.type }} message">
+  <div *ngIf="message.title" class="header">
+    {{ message.title }}
+  </div>
+  <p>{{ message.content }}</p>
+</div>

@@ -12,6 +12,7 @@ import {
   FooterComponent,
   SidebarRightComponent
 } from './layout';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {
     HeaderComponent, 
     FooterComponent,
     SidebarRightComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+    MessageComponent
   ],
   exports: [
     CommonModule,
@@ -35,7 +37,8 @@ import {
     HeaderComponent,
     FooterComponent,
     SidebarRightComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+    MessageComponent
   ],
   providers: [
     UserService

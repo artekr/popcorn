@@ -8,12 +8,14 @@ import { MyEntriesComponent } from './my-entries/my-entries.component';
 import { MyCommentsComponent } from './my-comments/my-comments.component';
 import { MyWordbooksComponent } from './my-wordbooks/my-wordbooks.component';
 import { EntriesModule } from '../entries';
+import { SharedModule } from '../shared';
 
 @NgModule({
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    EntriesModule
+    EntriesModule,
+    SharedModule
   ],
   declarations: [
     ProfileComponent,
