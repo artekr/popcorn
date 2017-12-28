@@ -32,7 +32,7 @@
       </div>
       <div class="item">
         <!-- Show this for logged out users -->
-        <div *ngIf="false" class="ui text menu">
+        <div *ngIf="true" class="ui text menu">
           <a class="item" routerLink="/login" routerLinkActive="active">
             登录
           </a>
@@ -43,7 +43,7 @@
 
         <!-- Show this for logged in users -->
         <!-- TODO -->
-        <div *ngIf="true" class="ui item" (click)="showProfileDropdown()">
+        <div *ngIf="false" class="ui item" (click)="showProfileDropdown()">
           <div class="ui dropdown">
             <span>{{currentUser.username}}</span>
             <i class="icon dropdown"></i>
