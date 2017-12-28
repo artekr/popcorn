@@ -1,7 +1,10 @@
-<div *ngIf="alert.content" class="ui {{ alert.type }} message">
-  <i *ngIf="alert.isCloseable" class="close icon"></i>
-  <div *ngIf="alert.title" class="header">
-    {{ alert.title }}
+<div *ngIf="alert?.message" class="ui icon {{ alert?.type }} message">
+  <!-- <i class="inbox icon"></i> -->
+  <i (click)="removeAlert(alert)" class="close icon"></i>
+  <div class="content">
+    <div *ngIf="alert?.title" class="header">
+      {{ alert.title }}
+    </div>
+    {{ alert.message }}
   </div>
-  <p>{{ alert.content }}</p>
 </div>

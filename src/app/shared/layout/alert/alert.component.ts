@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { Alert, ALERT_TYPE } from './alert.model';
+
+import { Alert, AlertType } from '../../model';
+import { AlertService } from '../../services';
 
 @Component({
   selector: 'app-alert',
@@ -9,11 +11,23 @@ import { Alert, ALERT_TYPE } from './alert.model';
 })
 export class AlertComponent implements OnInit {
 
-  @Input() alert: Alert;
+  alert: Alert;
 
-  constructor() { }
+  constructor(
+    private alertService: AlertService
+  ) {}
 
   ngOnInit() {
+    this.alertService.getAlert().subscribe((alert: Alert) => {
+      if (!alert) {
+        return;
+      }
+      this.alert = alert;
+    });
+  }
+
+  removeAlert(alert: Alert) {
+    this.alert = null;
   }
 
 }

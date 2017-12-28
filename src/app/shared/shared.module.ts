@@ -31,7 +31,8 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HeaderComponent, 
+    AlertComponent,
+    HeaderComponent,
     FooterComponent,
     SidebarRightComponent,
     ShowAuthedDirective
