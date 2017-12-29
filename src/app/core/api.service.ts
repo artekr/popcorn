@@ -18,7 +18,7 @@ export class ApiService {
     private http: HttpClient
   ) {}
 
-  private setHeaders(): HttpHeaders {
+  public setHeaders(): HttpHeaders {
     const headersConfig = {
       'Content-Type': 'application/json',
       'Accept'      : 'application/json',

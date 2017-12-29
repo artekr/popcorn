@@ -9,7 +9,7 @@ import { Entry } from '../shared/entry.model';
   encapsulation: ViewEncapsulation.None
 })
 export class EntryListComponent implements OnInit {
-  @Input() entries: Entry[];
+  @Input() entries: Array<Entry> = new Array<Entry>();
 
   constructor() { }
 

@@ -9,7 +9,7 @@ import { Entry } from '../shared/entry.model';
   encapsulation: ViewEncapsulation.None
 })
 export class EntryComponent implements OnInit {
-  @Input() entry: Entry;
+  @Input() entry: Entry = new Entry();
 
   showComment: boolean = false;
 

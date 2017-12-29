@@ -9,6 +9,7 @@ import { MyCommentsComponent } from './my-comments/my-comments.component';
 import { MyWordbooksComponent } from './my-wordbooks/my-wordbooks.component';
 import { EntriesModule } from '../entries';
 import { SharedModule } from '../shared';
+import { AlertService } from '../shared/services';
 
 @NgModule({
   imports: [
@@ -23,6 +24,9 @@ import { SharedModule } from '../shared';
     MyEntriesComponent,
     MyCommentsComponent,
     MyWordbooksComponent
+  ],
+  providers: [
+    AlertService
   ]
 })
 export class ProfileModule { }
