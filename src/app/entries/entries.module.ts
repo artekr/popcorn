@@ -19,7 +19,8 @@ import { EntryDetailComponent } from './entry-detail/entry-detail.component';
     EntryDetailComponent
   ],
   exports: [
-    EntryListComponent
+    EntryListComponent,
+    EntryComponent
   ]
 })
 export class EntriesModule { }

@@ -10,13 +10,16 @@ import { MyWordbooksComponent } from './my-wordbooks/my-wordbooks.component';
 import { EntriesModule } from '../entries';
 import { SharedModule } from '../shared';
 import { AlertService } from '../shared/services';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ProfileRoutingModule,
     EntriesModule,
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
   ],
   declarations: [
     ProfileComponent,
