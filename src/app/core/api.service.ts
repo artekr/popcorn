@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { 
+import {
   HttpHeaders,
   HttpClient,
   HttpResponse,
@@ -10,74 +10,74 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import { User } from './user.model';
 
 @Injectable()
 export class ApiService {
 
+  currentUser: User = new User();
+
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
-  public setHeaders(): HttpHeaders {
-    const headersConfig = {
-      'Content-Type': 'application/json',
-      'Accept'      : 'application/json',
-      'time_zone'   : 'UTC-05:00'
-    };
+  public buildHeaders(): HttpHeaders {
 
-    // TODO: check token
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .set('time_zone', 'UTC-05:00');
 
-    return new HttpHeaders(headersConfig);
+    if (this.currentUser.id) {
+      headers = headers.set('user_id', '1')
+      .set('jwt', 'xxx');
+    }
+    
+    return headers;
   }
 
   private formatErrors(error: any) {
     return Observable.throw(error);
   }
 
-  /**
-   * Override the HttpClient common methods
-   */
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+  get(path: string, params?: HttpParams): Observable<any> {
     return this.http.get(
       `${environment.api_url}${path}`,
       {
-        headers: this.setHeaders(),
+        headers: this.buildHeaders(),
         params: params
-      })
-      .pipe(
-        catchError(this.formatErrors)
-      )
+      });
   }
 
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
-      { headers: this.setHeaders() }
+      { headers: this.buildHeaders() }
     )
-    .pipe(
+      .pipe(
       catchError(this.formatErrors)
-    )
+      )
   }
 
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
-      { headers: this.setHeaders() }
+      { headers: this.buildHeaders() }
     )
-    .pipe(
+      .pipe(
       catchError(this.formatErrors)
-    )
+      )
   }
 
   delete(path: string): Observable<any> {
     return this.http.delete(
       `${environment.api_url}${path}`,
-      { headers: this.setHeaders() }
+      { headers: this.buildHeaders() }
     )
-    .pipe(
+      .pipe(
       catchError(this.formatErrors)
-    )
+      )
   }
 }
