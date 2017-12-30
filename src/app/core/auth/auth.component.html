@@ -10,11 +10,12 @@
     <!-- Login or Register section -->
     <div class="auth-main ui stacked segment">
       <!-- Login Form -->
-      <form [formGroup]="authForm" (ngSubmit)="onSubmitForm()" class="ui form">
+      <form class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmitForm()">
         <div *ngIf="authType == 'register'" class="inline field">
           <div class="ui fluid left icon input">
             <i class="user icon"></i>
-            <input 
+            <input
+              name="username"
               formControlName="username"
               type="text" 
               placeholder="用户名">
@@ -24,15 +25,23 @@
             <div class="ui fluid left icon input">
               <i class="mail icon"></i>
               <input
+                name="email"
                 formControlName="user_identity"
                 type="text"
-                placeholder="邮箱">
+                placeholder="邮箱"
+                required>
             </div>
+            <div *ngIf="user_identity.invalid && (user_identity.dirty || user_identity.touched)" class="ui attached segment">
+                <div *ngIf="user_identity.errors.required">
+                Name is required.
+                </div>
+              </div>
         </div>
         <div class="inline field">
           <div class="ui fluid left icon input">
             <i class="lock icon"></i>
             <input 
+              name="password"
               formControlName="password"
               type="password" 
               placeholder="密码">

@@ -1,7 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { UserService } from '../user.service';
+import {
+  AlertService
+} from '../../shared';
+
+declare var jquery: any; 
+declare var $: any
 
 @Component({
   selector: 'app-auth',
@@ -15,10 +22,11 @@ export class AuthComponent implements OnInit {
   authForm: FormGroup;
 
   constructor(
-    private route       : ActivatedRoute,
-    private router      : Router,
-    private userService : UserService,
-    private fb          : FormBuilder
+    private route        : ActivatedRoute,
+    private router       : Router,
+    private fb           : FormBuilder,
+    private userService  : UserService,
+    private alertService : AlertService
   ) { 
     this.createForm();
   }
@@ -45,6 +53,38 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  get user_identity() { 
+    return this.authForm.get('user_identity'); 
+  }
+
+  initFormValidation() {
+    $('.ui.form')
+      .form({
+        on: 'blur',
+        transition: 'shake',
+        fields: {
+          email: {
+            identifier : 'email',
+            rules: [
+              {
+                type   : 'email',
+                prompt : 'email'
+              }
+            ]
+          },
+          password: {
+            identifier : 'password',
+            rules: [
+              {
+                type   : 'empty',
+                prompt : 'pwd empty'
+              }
+            ]
+          }
+        }
+      });
+  }
+
   onSubmitForm() {
     if (this.authType === 'register') {
       this.authForm.patchValue({email: this.authForm.get('user_identity').value});
@@ -53,10 +93,11 @@ export class AuthComponent implements OnInit {
     console.log(credentials);
     this.userService.attemptAuth(this.authType, credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/')
-        //Todo: error handling
+        data => this.router.navigateByUrl('/'),
+        error => {
+          this.alertService.warning("啊哦", error);
+        }
       );
-
   }
 
 }
