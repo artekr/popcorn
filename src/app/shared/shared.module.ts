@@ -12,7 +12,8 @@ import {
   AlertComponent,
   HeaderComponent, 
   FooterComponent,
-  SidebarRightComponent
+  SidebarRightComponent,
+  AddEntryComponent
 } from './layout';
 import { MessageComponent } from './message/message.component';
 
@@ -24,6 +25,7 @@ import { MessageComponent } from './message/message.component';
   ],
   declarations: [
     AlertComponent,
+    AddEntryComponent,
     HeaderComponent, 
     FooterComponent,
     SidebarRightComponent,
