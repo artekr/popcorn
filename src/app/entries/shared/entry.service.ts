@@ -15,11 +15,9 @@ export class EntryService {
     private apiService: ApiService
   ) {}
 
-  query(): Observable<Entry[]> {
-    return of(ENTRIES);
-    // return this.apiService.get(
-    //   '/entry/hot_entry'
-    // );
+  query(type: string): Observable<Entry[]> {
+    // return of(ENTRIES);
+    return this.apiService.get('/entries/' + type);
   }
 
 }
