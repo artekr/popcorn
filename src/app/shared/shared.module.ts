@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { ShowAuthedDirective } from '../core/auth/show-authed.directive';
 import { UserService } from '../core/user.service';
 import {
@@ -41,7 +43,8 @@ import { MessageComponent } from './message/message.component';
     MessageComponent
   ],
   providers: [
-    UserService
+    UserService,
+    CookieService
   ]
 })
 export class SharedModule { }

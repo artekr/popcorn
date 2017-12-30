@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from "@angular/router";
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { User } from '../../../core/user.model';
 import { UserService } from '../../../core/user.service';
 
@@ -16,8 +18,10 @@ export class HeaderComponent implements OnInit {
 
   currentUser: User;
   dropdownIsShow: boolean = false;
+  username: string;
 
   constructor(
+    private cookieService: CookieService,
     private userService : UserService,
     private router      : Router
   ) {}
@@ -26,8 +30,12 @@ export class HeaderComponent implements OnInit {
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
+        this.username = userData.username;
       }
     )
+    if (this.cookieService.check("username")) {
+      this.username = this.cookieService.get("username");
+    }
   }
 
   showAddEntryModal() {
