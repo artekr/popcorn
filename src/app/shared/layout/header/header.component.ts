@@ -3,8 +3,10 @@ import { Router } from "@angular/router";
 
 import { CookieService } from 'ngx-cookie-service';
 
+import { AddEntryComponent } from '../add-entry/add-entry.component';
 import { User } from '../../../core/user.model';
 import { UserService } from '../../../core/user.service';
+import { AlertService } from '../../services';
 
 declare var $: any;
 
@@ -23,6 +25,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private cookieService: CookieService,
     private userService : UserService,
+    private alertService: AlertService,
     private router      : Router
   ) {}
 
@@ -39,11 +42,12 @@ export class HeaderComponent implements OnInit {
   }
 
   showAddEntryModal() {
-    $('.tiny.modal')
-    .modal({
-      blurring: true
-    })
-    .modal('show');
+
+    if (this.cookieService.check("jwt")) {
+      AddEntryComponent.openAddEntryModal();
+    } else {
+      this.alertService.error("啊啊","朋友请先登录");
+    }
   }
 
   showProfileDropdown() {
