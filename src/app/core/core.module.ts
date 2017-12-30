@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { AuthModule } from "./auth/auth.module";
 
 import { ApiService } from './api.service';
@@ -17,6 +19,7 @@ import { Token } from '@angular/compiler';
     ApiService,
     ExceptionService,
     UserService,
+    CookieService,
     JwtService
   ]
 })
