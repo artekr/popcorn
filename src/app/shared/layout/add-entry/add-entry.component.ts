@@ -49,7 +49,7 @@ export class AddEntryComponent implements OnInit {
 
   onSubmitEntryForm() {
     var form = this.addEntryForm;
-    $('.ui.form')
+    $('#addEntry-form')
       .form({
         on: 'blur',
         fields: {
