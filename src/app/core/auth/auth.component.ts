@@ -57,18 +57,31 @@ export class AuthComponent implements OnInit {
     return this.authForm.get('user_identity'); 
   }
 
-  initFormValidation() {
-    $('.ui.form')
+  onSubmitForm() {
+    var router       = this.router; 
+    var authType     = this.authType;
+    var authForm     = this.authForm;
+    var userService  = this.userService;
+    var alertService = this.alertService;
+    $('#login-form')
       .form({
         on: 'blur',
-        transition: 'shake',
         fields: {
+          username: {
+            identifier : 'username',
+            rules: [
+              {
+                type   : 'empty',
+                prompt : '用户名不能为空哦'
+              }
+            ]
+          },
           email: {
             identifier : 'email',
             rules: [
               {
                 type   : 'email',
-                prompt : 'email'
+                prompt : '请填写有效的邮箱地址'
               }
             ]
           },
@@ -77,27 +90,30 @@ export class AuthComponent implements OnInit {
             rules: [
               {
                 type   : 'empty',
-                prompt : 'pwd empty'
+                prompt : '密码不能为空哦'
               }
             ]
           }
+        },
+        onSuccess(event, fields){
+          console.log(authType);
+          if (authType === 'register') {
+            authForm.patchValue({ email: authForm.get('user_identity').value });
+          }
+          const credentials = authForm.value;
+          console.log(credentials);
+          userService.attemptAuth(authType, credentials)
+            .subscribe(
+              data => router.navigateByUrl('/'),
+              error => {
+                alertService.warning("啊哦", error);
+              }
+            );
+        },
+        onFailure(formErrors, fields){
+          console.log("Failure!");
         }
-      });
-  }
-
-  onSubmitForm() {
-    if (this.authType === 'register') {
-      this.authForm.patchValue({email: this.authForm.get('user_identity').value});
-    }
-    const credentials = this.authForm.value;
-    console.log(credentials);
-    this.userService.attemptAuth(this.authType, credentials)
-      .subscribe(
-        data => this.router.navigateByUrl('/'),
-        error => {
-          this.alertService.warning("啊哦", error);
-        }
-      );
+      }).form("validate form");
   }
 
 }
