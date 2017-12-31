@@ -21,6 +21,7 @@ import { MessageComponent } from './message/message.component';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   declarations: [
