@@ -1,5 +1,6 @@
 import { Tag } from "./tag.model";
 import { Comment } from "./comment.model";
+import { User } from "../../core/user.model";
 
 export class Entry {
     id          : number;
@@ -8,6 +9,8 @@ export class Entry {
     example     : string;
     status      : string;
     create_time : string;
+    update_time : string;
+    create_user : User;
     tags        : Array<Tag> = [];
     comments    : Array<Comment> = [];
 }
