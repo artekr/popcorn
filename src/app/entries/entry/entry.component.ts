@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
+import { EntryService } from '../shared/entry.service';
 import { Entry } from '../shared/entry.model';
 
 @Component({
@@ -13,9 +14,20 @@ export class EntryComponent implements OnInit {
 
   showComment: boolean = false;
 
-  constructor() { }
+  constructor(
+    private entryService: EntryService
+  ) {}
 
   ngOnInit() {
   }
+
+  onUpVote() {
+    this.entryService.upVoteEntry(this.entry.id);
+  }
+
+  onDownVote() {
+    this.entryService.downVoteEntry(this.entry.id);
+  }
+
 
 }
