@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
+import 'rxjs/add/operator/map';
+import { EntryService } from '../../../entries/shared';
+
 declare var $: any;
 
 @Component({
@@ -14,7 +17,8 @@ export class AddEntryComponent implements OnInit {
   addEntryForm: FormGroup;
 
   constructor(
-    private fb : FormBuilder
+    private fb        : FormBuilder,
+    private entryService: EntryService
   ) {
     this.createForm();
   }
@@ -23,16 +27,18 @@ export class AddEntryComponent implements OnInit {
   }
 
   public static openAddEntryModal() {
-    $('.tiny.modal')
+    $('#addEntry-modal')
     .modal({
       blurring: true,
       onHidden() {
         //Resets form input fields from data value
         $('.ui.form').trigger("reset");
-        $('.ui.form').form('remove fields', ['entry_name', 'entry_definition']);
+        $('.ui.form').form('remove fields', ['name', 'definition']);
         //Resets form error messages and field styles
         $('.ui.form .field.error').removeClass("error");
         $('.ui.form.error').removeClass("error");
+        //Remove the loader to invisible
+        $('#addEntry-form-loader').removeClass('active');
       }
     })
     .modal('show');
@@ -40,21 +46,23 @@ export class AddEntryComponent implements OnInit {
 
   createForm() {
     this.addEntryForm = this.fb.group({
-      entry_name      : ['', Validators.required],
-      entry_definition: ['', Validators.required],
-      entry_example   : [''],
-      entry_tags      : ['']
+      name      : ['', Validators.required],
+      definition: ['', Validators.required],
+      example   : '',
+      tags      : ''
     });
   }
 
   onSubmitEntryForm() {
-    var form = this.addEntryForm;
+    var addEntryForm = this.addEntryForm;
+    var entryService = this.entryService;
+
     $('#addEntry-form')
       .form({
         on: 'blur',
         fields: {
-          entry_name: {
-            identifier : 'entry_name',
+          name: {
+            identifier : 'name',
             rules: [
               {
                 type   : 'empty',
@@ -62,8 +70,8 @@ export class AddEntryComponent implements OnInit {
               }
             ]
           },
-          entry_definition: {
-            identifier : 'entry_definition',
+          definition: {
+            identifier : 'definition',
             rules: [
               {
                 type   : 'empty',
@@ -73,11 +81,22 @@ export class AddEntryComponent implements OnInit {
           }
         },
         onSuccess(event, fields){
-          if (!form.get('entry_example').value || !form.get('entry_tags').value) {
-            console.log("entry_example or entry_tags are empty");
-          } else {
-            console.log("Success!");
+          // Build the tags array if there are any
+          var tagsArray:Array<any>=[] //empty array which we are going to push our selected items, always define types 
+          if (addEntryForm.get('tags').value) {
+            let tagNameArray = addEntryForm.get('tags').value.split(" ");
+            for (var i in tagNameArray) {
+              var tag = {name : tagNameArray[i]};
+              tagsArray.push(tag);
+            }
           }
+          entryService.submitEntry({
+            name      : addEntryForm.get('name').value,
+            definition: addEntryForm.get('definition').value,
+            example   : addEntryForm.get('example').value,
+            tags      : tagsArray
+          });
+          $('#addEntry-form-loader').addClass('active');
         },
         onFailure(formErrors, fields){
           console.log("Failure!");

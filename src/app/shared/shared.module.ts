@@ -7,6 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CookieService } from 'ngx-cookie-service';
 
 import { ShowAuthedDirective } from '../core/auth/show-authed.directive';
+import { EntryService } from '../entries/shared';
 import { UserService } from '../core/user.service';
 import {
   AlertComponent,
@@ -47,6 +48,7 @@ import { MessageComponent } from './message/message.component';
   ],
   providers: [
     UserService,
+    EntryService,
     CookieService
   ]
 })

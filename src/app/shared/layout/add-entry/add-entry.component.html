@@ -1,4 +1,7 @@
-<div class="ui tiny modal">
+<div id="addEntry-modal" class="ui tiny modal">
+  <div id="addEntry-form-loader" class="ui inverted dimmer">
+    <div class="ui medium text loader">正在提交...</div>
+  </div>
   <i class="close icon"></i>
   <div class="header">添加新词条</div>
   <div class="content">
@@ -6,30 +9,30 @@
       <div class="required field">
         <label>词条</label>
         <input
-          name="entry_name"
-          formControlName="entry_name"
+          name="name"
+          formControlName="name"
           type="text"
           placeholder="添加词条名">
       </div>
       <div class="required field">
         <label>释义</label>
         <textarea
-          name="entry_definition"
-          formControlName="entry_definition"
+          name="definition"
+          formControlName="definition"
           rows="4"
           placeholder="添加词条解释"></textarea>
       </div>
       <div class="field">
         <label>例句</label>
         <textarea
-          formControlName="entry_example"
+          formControlName="example"
           rows="2"
           placeholder="举个栗子"></textarea>
       </div>
       <div class="field">
         <label>标签</label>
         <input
-          formControlName="entry_tags"
+          formControlName="tags"
           type="text"
           placeholder="多个标签请用逗号分开">
       </div>
