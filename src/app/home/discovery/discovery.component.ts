@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { 
+  Entry,
+  EntryService
+} from '../../entries';
+
 @Component({
   selector: 'app-discovery',
   templateUrl: './discovery.component.html',
@@ -8,9 +13,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DiscoveryComponent implements OnInit {
 
-  constructor() { }
+  entries: Entry[];
+
+  constructor(private entryService: EntryService) { }
 
   ngOnInit() {
+    this.queryEntries();
+  }
+
+  queryEntries(): void {
+    this.entryService.query("random_entries")
+        .subscribe(entries => this.entries = entries);
   }
 
 }

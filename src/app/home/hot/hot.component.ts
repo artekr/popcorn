@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { 
+  Entry,
+  EntryService
+} from '../../entries';
+
 @Component({
   selector: 'app-hot',
   templateUrl: './hot.component.html',
@@ -8,9 +13,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HotComponent implements OnInit {
 
-  constructor() { }
+  entries: Entry[];
+
+  constructor(private entryService: EntryService) { }
 
   ngOnInit() {
+    this.queryEntries();
+  }
+
+  queryEntries(): void {
+    this.entryService.query("hot_entries")
+        .subscribe(entries => this.entries = entries);
   }
 
 }
