@@ -11,14 +11,14 @@ import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class ApiService {
 
-  currentUser: User = new User();
-
   constructor(
-    private http: HttpClient
+    private http         : HttpClient,
+    private cookieService: CookieService
   ) { }
 
   public buildHeaders(): HttpHeaders {
@@ -28,11 +28,10 @@ export class ApiService {
       .set('Accept', 'application/json')
       .set('time_zone', 'UTC-05:00');
 
-    if (this.currentUser.id) {
-      headers = headers.set('user_id', '1')
-      .set('jwt', 'xxx');
+    if (this.cookieService.check('jwt') && this.cookieService.check('userid') ) {
+      headers = headers.set('user_id', this.cookieService.get("userid"))
+      .set('jwt', this.cookieService.get('jwt'));
     }
-    
     return headers;
   }
 
