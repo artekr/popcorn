@@ -1,13 +1,6 @@
 <app-message [message]="message">
 </app-message>
 
+<app-entry *ngFor="let entry of entries" [entry]="entry"></app-entry>
 
-
-<div class="search-results" data-infinite-scroll debounce [infiniteScrollDistance]="10" 
-[infiniteScrollThrottle]="300" (scrolled)="onScroll()" >
-  <app-entry *ngFor="let entry of entries" [entry]="entry">
-  </app-entry>
-  <!-- <p *ngFor="let i of array">
-    {{ i }}
-  </p> -->
-</div>
+<app-pagination [pagination]="pagination"></app-pagination>

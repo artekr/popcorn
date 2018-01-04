@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Entry } from '../../entries';
 import { ENTRIES } from "../../mock-entries";
-import { Pagination, Message, MESSAGE_TYPE } from '../../shared';
+import { Message, MESSAGE_TYPE, Pagination } from '../../shared';
 import { HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../core';
@@ -15,19 +15,18 @@ import { AlertService } from '../../shared/services';
 })
 export class MyEntriesComponent implements OnInit {
   entries: Entry[] = new Array<Entry>();
-  pagination: Pagination;
+  pagination: Pagination = new Pagination();
   message: Message = new Message();
   page: number = 1;
   defaultPageSize: number = 3;
 
-  array = [];
-
-
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.appendEntries ();
-    this.page++;
+    // this.appendEntries ();
+
+    this.pagination.currentPage = 2;
+    this.pagination.totalPages = 7;
   }
 
   appendEntries() {
@@ -51,11 +50,5 @@ export class MyEntriesComponent implements OnInit {
         this.message.type = MESSAGE_TYPE.ERROR;
       },
     );
-  }
-
-  onScroll() {
-    this.appendEntries();
-    this.page++;
-    console.log('scrolled!!');
   }
 }

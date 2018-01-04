@@ -17,6 +17,7 @@ import {
   AddEntryComponent
 } from './layout';
 import { MessageComponent } from './message/message.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { MessageComponent } from './message/message.component';
     FooterComponent,
     SidebarRightComponent,
     ShowAuthedDirective,
-    MessageComponent
+    MessageComponent,
+    PaginationComponent
   ],
   exports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { MessageComponent } from './message/message.component';
     FooterComponent,
     SidebarRightComponent,
     ShowAuthedDirective,
-    MessageComponent
+    MessageComponent,
+    PaginationComponent
   ],
   providers: [
     UserService,

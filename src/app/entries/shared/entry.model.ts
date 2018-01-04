@@ -9,8 +9,8 @@ export class Entry {
     example     : string;
     status      : string;
     create_time : string;
-    update_time : string;
-    create_user : User;
+    update_time? : string;
+    create_user? : User;
     tags        : Array<Tag> = [];
     comments    : Array<Comment> = [];
 }

@@ -1,0 +1,35 @@
+<div class="ui animated button" tabindex="0">
+  <div class="visible content">第一页</div>
+  <div class="hidden content">
+    <i class="angle double left icon"></i>
+  </div>
+</div>
+
+<div class="ui animated button" tabindex="0">
+  <div class="visible content">前一页</div>
+  <div class="hidden content">
+    <i class="angle left icon"></i>
+  </div>
+</div>
+
+<div class="ui compact selection dropdown pagination">
+  <i class="dropdown icon"></i>
+  <div class="text">{{ pagination.currentPage }}</div>
+  <div class="menu">
+    <div class="item" *ngFor="let page of pages">{{ page }}</div>
+  </div>
+</div>
+
+<div class="ui animated button" tabindex="0">
+  <div class="visible content">下一页</div>
+  <div class="hidden content">
+    <i class="angle right icon"></i>
+  </div>
+</div>
+
+<div class="ui animated button" tabindex="0">
+  <div class="visible content">最后页</div>
+  <div class="hidden content">
+    <i class="angle double right icon"></i>
+  </div>
+</div>
