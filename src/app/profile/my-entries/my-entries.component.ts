@@ -27,6 +27,8 @@ export class MyEntriesComponent implements OnInit {
 
     this.pagination.currentPage = 2;
     this.pagination.totalPages = 7;
+    this.pagination.isFirstPage = false;
+    this.pagination.isLastPage = false;
   }
 
   appendEntries() {
@@ -50,5 +52,16 @@ export class MyEntriesComponent implements OnInit {
         this.message.type = MESSAGE_TYPE.ERROR;
       },
     );
+  }
+
+  goNextPage(nextPage: number) {
+    this.pagination.currentPage = nextPage;
+    if (nextPage == 1) {
+      this.pagination.isFirstPage = true;
+    }
+    if (nextPage == this.pagination.totalElements) {
+      this.pagination.isLastPage = true;
+    }
+    console.log("my-entries nextPage:" + nextPage);
   }
 }

@@ -1,15 +1,8 @@
-<div class="ui animated button" tabindex="0">
-  <div class="visible content">第一页</div>
-  <div class="hidden content">
-    <i class="angle double left icon"></i>
-  </div>
-</div>
+<div class="text">{{ pagination.currentPage }}</div>
 
-<div class="ui animated button" tabindex="0">
-  <div class="visible content">前一页</div>
-  <div class="hidden content">
-    <i class="angle left icon"></i>
-  </div>
+<div class="ui medium basic icon buttons">
+  <button class="ui button" (click)="clickFirstPage()"><i class="angle double left icon"></i></button>
+  <button class="ui button" (click)="clickPreviousPage()"><i class="angle left icon"></i></button>
 </div>
 
 <div class="ui compact selection dropdown pagination">
@@ -20,16 +13,7 @@
   </div>
 </div>
 
-<div class="ui animated button" tabindex="0">
-  <div class="visible content">下一页</div>
-  <div class="hidden content">
-    <i class="angle right icon"></i>
-  </div>
-</div>
-
-<div class="ui animated button" tabindex="0">
-  <div class="visible content">最后页</div>
-  <div class="hidden content">
-    <i class="angle double right icon"></i>
-  </div>
+<div class="ui medium basic icon buttons">
+  <button class="ui button" (click)="clickNextPage()"><i class="angle right icon"></i></button>
+  <button class="ui button" (click)="clickLastPage()"><i class="angle double right icon"></i></button>
 </div>

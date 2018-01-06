@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
 import { Pagination } from './pagination.model';
 declare var jquery: any;
 declare var $: any;
@@ -12,22 +12,64 @@ declare var $: any;
 export class PaginationComponent implements OnInit {
 
   @Input() pagination: Pagination = new Pagination();
-  pages: number[];
+  @Output() goToNextPage: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  pages: number[];
+  nextPage: number = 1;
+
+  constructor() {}
 
   ngOnInit() {
-    $('.ui.dropdown.pagination').dropdown();
-    this.update();
+    $('.ui.dropdown.pagination').dropdown(
+      'setting', 'onChange', () => {
+        this.nextPage = $('.ui.dropdown.pagination').dropdown('get value');
+        this.updatePagination();
+      }
+    );
+
+    this.updatePageList();
   }
 
-  update() {
+  updatePageList() {
     this.pages = [];
-    console.log("this.pagination.totalPages: " + this.pagination.totalPages);
     for (var _i = 0; _i < this.pagination.totalPages; _i++) {
-      console.log(_i);
       this.pages.push(_i + 1);
     }
+  }
+
+  updatePagination() {
+    this.updatePageList();
+    this.goToNextPage.emit(this.nextPage);
+    console.log("selectedPage: " + this.nextPage);
+  }
+
+  clickNextPage () {
+    if (this.pagination.isLastPage 
+      || this.pagination.currentPage >= this.pagination.totalPages) {
+      this.nextPage = this.pagination.currentPage;
+    } else {
+      this.nextPage = Number(this.pagination.currentPage) + 1;
+    }
+    this.updatePagination();
+  }
+
+  clickLastPage () {
+    this.nextPage = this.pagination.totalPages;
+    this.updatePagination();
+  }
+
+  clickPreviousPage () {
+    if (this.pagination.isFirstPage || this.pagination.currentPage <= 1) {
+      this.nextPage = 1;
+    } else {
+      this.nextPage = Number(this.pagination.currentPage) - 1;
+    }
+    this.updatePagination();
+  }
+
+  clickFirstPage () {
+    this.nextPage = 1;
+    this.updatePagination();
   }
 
 }

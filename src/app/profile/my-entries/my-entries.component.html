@@ -3,4 +3,4 @@
 
 <app-entry *ngFor="let entry of entries" [entry]="entry"></app-entry>
 
-<app-pagination [pagination]="pagination"></app-pagination>
+<app-pagination [pagination]="pagination" (goToNextPage)="goNextPage($event)"></app-pagination>
