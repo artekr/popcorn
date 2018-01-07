@@ -14,36 +14,116 @@ export class PaginationComponent implements OnInit {
   @Input() pagination: Pagination = new Pagination();
   @Output() goToNextPage: EventEmitter<number> = new EventEmitter<number>();
 
-  pages: number[];
   nextPage: number = 1;
+  disabledPagination: boolean = true;
+
+  showPaginationComponent: boolean = true;
+  showFrontDots: boolean = false;
+  showRearDots: boolean = false;
+  showPreviousPage: boolean = false;
+  showNextPage: boolean = false;
+  showLastPage: boolean = false;
+  showFirstPage: boolean = false;
 
   constructor() {}
 
   ngOnInit() {
-    $('.ui.dropdown.pagination').dropdown(
-      'setting', 'onChange', () => {
-        this.nextPage = $('.ui.dropdown.pagination').dropdown('get value');
-        this.updatePagination();
-      }
-    );
-
-    this.updatePageList();
+    this.varifyPagination ();
+    this.updateButtons();
   }
 
-  updatePageList() {
-    this.pages = [];
-    for (var _i = 0; _i < this.pagination.totalPages; _i++) {
-      this.pages.push(_i + 1);
+  updateButtons () {
+    let lastPage: number = this.pagination.totalPages;
+    let currentPage: number = this.pagination.currentPage;
+    
+    if (lastPage - currentPage > 1) {
+      this.showLastPage = true;
+    } else {
+      this.showLastPage = false;
+    }
+
+    if (lastPage - currentPage > 2) {
+      this.showRearDots = true;
+    } else {
+      this.showRearDots = false;
+    }
+
+    if (lastPage - currentPage > 0) {
+      this.showNextPage = true;
+    } else {
+      this.showNextPage = false;
+    }
+
+    if (currentPage > 2) {
+      this.showPreviousPage = true;
+    } else {
+      this.showPreviousPage = false;
+    }
+
+    if (currentPage > 3) {
+      this.showFrontDots = true;
+    } else {
+      this.showFrontDots = false;
+    }
+
+    if (currentPage > 1) {
+      this.showFirstPage = true;
+    } else {
+      this.showFirstPage = false;
+    }
+  }
+
+  varifyPagination () {
+    if (this.pagination.currentPage <= 0) {
+
+    }
+
+    if (this.pagination.totalPages <= 0) {
+
+    }
+
+    if (this.pagination.currentPage == 1) {
+      this.pagination.isFirstPage = true;
+    } else {
+      this.pagination.isFirstPage = false;
+    }
+
+    if (this.pagination.currentPage == this.pagination.totalElements) {
+      this.pagination.isLastPage = true;
+    } else {
+      this.pagination.isLastPage = false;
     }
   }
 
   updatePagination() {
-    this.updatePageList();
     this.goToNextPage.emit(this.nextPage);
     console.log("selectedPage: " + this.nextPage);
+    this.updateButtons();
+  }
+
+  clickFirstPage () {
+    this.varifyPagination ();
+    this.nextPage = 1;
+    this.updatePagination();
+  }
+
+  clickPreviousPage () {
+    this.varifyPagination ();
+    console.log("clickPreviousPage 1: " + this.pagination.currentPage);
+
+    if (this.pagination.isFirstPage || this.pagination.currentPage <= 1) {
+      this.nextPage = 1;
+    } else {
+      this.nextPage = Number(this.pagination.currentPage) - 1;
+    }
+
+    console.log("clickPreviousPage 4: " + this.nextPage);
+    this.updatePagination();
   }
 
   clickNextPage () {
+    this.varifyPagination ();
+
     if (this.pagination.isLastPage 
       || this.pagination.currentPage >= this.pagination.totalPages) {
       this.nextPage = this.pagination.currentPage;
@@ -54,21 +134,9 @@ export class PaginationComponent implements OnInit {
   }
 
   clickLastPage () {
+    this.varifyPagination ();
+
     this.nextPage = this.pagination.totalPages;
-    this.updatePagination();
-  }
-
-  clickPreviousPage () {
-    if (this.pagination.isFirstPage || this.pagination.currentPage <= 1) {
-      this.nextPage = 1;
-    } else {
-      this.nextPage = Number(this.pagination.currentPage) - 1;
-    }
-    this.updatePagination();
-  }
-
-  clickFirstPage () {
-    this.nextPage = 1;
     this.updatePagination();
   }
 

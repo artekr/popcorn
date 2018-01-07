@@ -1,19 +1,12 @@
-<div class="text">{{ pagination.currentPage }}</div>
 
-<div class="ui medium basic icon buttons">
-  <button class="ui button" (click)="clickFirstPage()"><i class="angle double left icon"></i></button>
-  <button class="ui button" (click)="clickPreviousPage()"><i class="angle left icon"></i></button>
-</div>
+<div class="ui pagination menu" *ngIf="showPaginationComponent" >
+  <a class="item" (click)="clickFirstPage()" *ngIf="showFirstPage">1</a>
+  <div class="disabled item" *ngIf="showFrontDots">...</div>
+  
+  <a class="item" (click)="clickPreviousPage()" *ngIf="showPreviousPage">{{ pagination.currentPage - 1 }}</a>
+  <a class="disabled item">{{ pagination.currentPage }}</a>
+  <a class="item" (click)="clickNextPage()" *ngIf="showNextPage">{{ pagination.currentPage + 1 }}</a>
 
-<div class="ui compact selection dropdown pagination">
-  <i class="dropdown icon"></i>
-  <div class="text">{{ pagination.currentPage }}</div>
-  <div class="menu">
-    <div class="item" *ngFor="let page of pages">{{ page }}</div>
-  </div>
-</div>
-
-<div class="ui medium basic icon buttons">
-  <button class="ui button" (click)="clickNextPage()"><i class="angle right icon"></i></button>
-  <button class="ui button" (click)="clickLastPage()"><i class="angle double right icon"></i></button>
+  <div class="disabled item" *ngIf="showRearDots">...</div>
+  <a class="item" (click)="clickLastPage()" *ngIf="showLastPage">{{ pagination.totalPages }}</a>
 </div>

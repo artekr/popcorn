@@ -25,8 +25,8 @@ export class MyEntriesComponent implements OnInit {
   ngOnInit() {
     // this.appendEntries ();
 
-    this.pagination.currentPage = 2;
-    this.pagination.totalPages = 7;
+    this.pagination.currentPage = 5;
+    this.pagination.totalPages = 13;
     this.pagination.isFirstPage = false;
     this.pagination.isLastPage = false;
   }
@@ -56,12 +56,6 @@ export class MyEntriesComponent implements OnInit {
 
   goNextPage(nextPage: number) {
     this.pagination.currentPage = nextPage;
-    if (nextPage == 1) {
-      this.pagination.isFirstPage = true;
-    }
-    if (nextPage == this.pagination.totalElements) {
-      this.pagination.isLastPage = true;
-    }
     console.log("my-entries nextPage:" + nextPage);
   }
 }
