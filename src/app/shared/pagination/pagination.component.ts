@@ -97,7 +97,6 @@ export class PaginationComponent implements OnInit {
 
   updatePagination() {
     this.goToNextPage.emit(this.nextPage);
-    console.log("selectedPage: " + this.nextPage);
     this.updateButtons();
   }
 
@@ -109,7 +108,6 @@ export class PaginationComponent implements OnInit {
 
   clickPreviousPage () {
     this.varifyPagination ();
-    console.log("clickPreviousPage 1: " + this.pagination.currentPage);
 
     if (this.pagination.isFirstPage || this.pagination.currentPage <= 1) {
       this.nextPage = 1;
@@ -117,7 +115,6 @@ export class PaginationComponent implements OnInit {
       this.nextPage = Number(this.pagination.currentPage) - 1;
     }
 
-    console.log("clickPreviousPage 4: " + this.nextPage);
     this.updatePagination();
   }
 
@@ -139,5 +136,4 @@ export class PaginationComponent implements OnInit {
     this.nextPage = this.pagination.totalPages;
     this.updatePagination();
   }
-
 }
