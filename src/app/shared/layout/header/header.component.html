@@ -48,10 +48,9 @@
             <span>{{ username }}</span>
             <i class="icon dropdown"></i>
             <div class="menu">
-              <div class="item">个人主页</div>
-              <div class="item">账号管理</div>
-              <div class="divider"></div>
-              <div class="item" (click)="logout()">退出</div>
+              <a class="item" [routerLink]="['/profile', username]" routerLinkActive="active"><i class="user icon"></i>个人主页</a>
+              <a class="item"><i class="setting icon"></i>账号管理</a>
+              <a class="item" (click)="logout()"><i class="power icon"></i>退出</a>
             </div>
           </div>
         </div>

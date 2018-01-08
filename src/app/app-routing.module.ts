@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: 'app/about/about.module#AboutModule'
   },
   {
-    path: 'profile',
+    path: 'profile/:username',
     loadChildren: 'app/profile/profile.module#ProfileModule'
   }
 ];
