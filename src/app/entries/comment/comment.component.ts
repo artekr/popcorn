@@ -24,18 +24,17 @@ export class CommentComponent implements OnInit {
 
   onSubmitComment() {
     if (this.comment) {
-      console.log("input: " + this.comment);
       var commentObject = {
         content: this.comment
       };
       this.apiService.post('/entries/' + String(this.entry_id) + '/comments', commentObject)
         .subscribe(
           data => {
-            console.log(data);
             this.comments.unshift(data);
             this.comment = "";
           },
           error => {
+            // TODO: error handling
             console.log("error " + error);
           }
         );

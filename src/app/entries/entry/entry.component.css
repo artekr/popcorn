@@ -3,12 +3,12 @@
   box-shadow: 0 2px 4px 0 #e6e6e6, 0 0 0 1px #e6e6e6;
 }
 
-.ui.card.entry-card:hover {
+/* .ui.card.entry-card:hover {
   box-shadow: 0 2px 4px 0 #e0e0e0, 0 0 0 1px #e0e0e0;
   background-color: rgba(255, 255, 255, 0.7);
   -webkit-transform: none;
   transform:none;
-}
+} */
 
 .ui.entry-card .entry-main {
   padding: 20px 20px 16px;
