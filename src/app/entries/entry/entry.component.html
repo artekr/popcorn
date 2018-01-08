@@ -33,17 +33,17 @@
       <div class="item">
         <a class="middle aligned content" (click)="onUpVote()">
           <i class="thumbs outline up icon"></i>
-          123
+          {{ entry.upVotesCount }}
         </a>
         <a class="middle aligned content" (click)="onDownVote()">
           <i class="thumbs outline down icon"></i>
-          5
+          {{ entry.downVotesCount }}
         </a>
       </div>
       <div class="item">
         <a class="middle aligned content" (click)="this.showComment = !this.showComment">
           <i class="comment outline icon"></i>
-          237
+          {{ entry.comments.length }}
         </a>
       </div>
       <div class="item">
@@ -58,6 +58,6 @@
       </div>
     </div>
   </div>
-  <app-comment *ngIf="showComment" [comments]="entry.comments"></app-comment>
+  <app-comment *ngIf="showComment" [comments]="entry.comments" [entry_id]="entry.id"></app-comment>
 
 </div>
