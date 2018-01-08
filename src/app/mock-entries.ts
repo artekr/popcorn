@@ -6,6 +6,8 @@ export const ENTRIES: Entry[] = [{
     "definition": "beautiful face的简称",
     "example": "请用您的B脸解锁手机.",
     "status": "VALID",
+    "upVotesCount": 0,
+    "downVotesCount": 0,
     "create_time": "2017-09-23T21:21:15.508-04:00[UTC-04:00]",
     "tags": [
       {
@@ -109,6 +111,8 @@ export const ENTRIES: Entry[] = [{
     "definition": "有理有据，令人信服",
     "example": "楼主李菊福",
     "status": "VALID",
+    "upVotesCount": 0,
+    "downVotesCount": 0,
     "create_time": "2017-09-23T21:21:15.508-04:00[UTC-04:00]",
     "tags": [
       {
