@@ -14,7 +14,8 @@
             {{ comment.content }}
           </div>
           <div class="actions">
-            <a class="hide">举报</a>
+            <a class="report">举报</a>
+            <a *ngIf="comment.create_user.id == currentUserId" class="delete" (click)="onDeleteComment(comment.id, comment)">删除</a>
           </div>
         </div>
       </div>
