@@ -37,28 +37,12 @@ export class EntryService {
       );
   }
 
-  upVoteEntry(entry_id: number) {
-    this.apiService.post('/entries/' + String(entry_id) + '/up_votes')
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log("error " + error);
-        }
-      );
+  upVoteEntry(entry_id: number): Observable<any> {
+    return this.apiService.post('/entries/' + String(entry_id) + '/up_votes');
   }
 
-  downVoteEntry(entry_id: number) {
-    this.apiService.post('/entries/' + String(entry_id) + '/down_votes')
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log("error " + error);
-        }
-      );
+  downVoteEntry(entry_id: number): Observable<any> {
+    return this.apiService.post('/entries/' + String(entry_id) + '/down_votes');
   }
 
 }

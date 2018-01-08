@@ -22,11 +22,29 @@ export class EntryComponent implements OnInit {
   }
 
   onUpVote() {
-    this.entryService.upVoteEntry(this.entry.id);
+    this.entryService.upVoteEntry(this.entry.id)
+      .subscribe(
+        data => {
+          this.entry.upVotesCount += 1;
+        },
+        error => {
+          // TODO: Error handling
+          console.log("error " + error);
+        }
+      );
   }
 
   onDownVote() {
-    this.entryService.downVoteEntry(this.entry.id);
+    this.entryService.downVoteEntry(this.entry.id)
+      .subscribe(
+        data => {
+          this.entry.downVotesCount += 1;
+        },
+        error => {
+          // TODO: Error handling
+          console.log("error " + error);
+        }
+      );
   }
 
 
