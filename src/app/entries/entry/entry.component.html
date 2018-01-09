@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="extra entry-meta">
-    <div class="ui very relaxed horizontal list">
+    <div class="ui relaxed horizontal list">
       <div class="item">
         <a class="middle aligned content" (click)="onUpVote()">
           <i class="thumbs outline up icon"></i>
@@ -43,11 +43,19 @@
         <a class="middle aligned content" (click)="this.showComment = !this.showComment">
           <i class="comment outline icon"></i>
           {{ entry.comments.length }}
+          条评论
         </a>
       </div>
       <div class="item">
         <a class="middle aligned content">
           <i class="send outline icon"></i>
+          分享
+        </a>
+      </div>
+      <div class="item">
+        <a class="middle aligned content" (click)="onSaveToWordbook()">
+          <i class="remove bookmark icon"></i>
+          收藏
         </a>
       </div>
       <div class="item">

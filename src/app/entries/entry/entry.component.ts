@@ -80,5 +80,8 @@ export class EntryComponent implements OnInit {
       );
   }
 
+  onSaveToWordbook() {
+    
+  }
 
 }
