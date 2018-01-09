@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewEncapsulation, Input, Pipe, PipeTransform } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { CookieService } from 'ngx-cookie-service';
 
 import { Comment } from '../shared/comment.model';
 import { ApiService } from '../../core/api.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-comment',
@@ -19,8 +22,9 @@ export class CommentComponent implements OnInit {
   private currentUserId: string = "";
 
   constructor(
-    private apiService: ApiService,
-    private cookieService: CookieService
+    private apiService   : ApiService,
+    private cookieService: CookieService,
+    private router       : Router
   ) {}
 
   ngOnInit() {
@@ -44,6 +48,18 @@ export class CommentComponent implements OnInit {
 
   onSubmitComment() {
     if (this.comment) {
+      if (!this.cookieService.check('userid')) {
+        var router = this.router;
+        $('#loginAlertModal')
+          .modal({
+            blurring  : true,
+            onApprove : function() {
+              router.navigateByUrl('/login');
+            }
+          })
+          .modal('show')
+        return
+      }
       var commentObject = {
         content: this.comment
       };
