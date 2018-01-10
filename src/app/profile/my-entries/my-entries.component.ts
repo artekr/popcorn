@@ -15,6 +15,7 @@ import { JPAPagination } from '../../shared/model';
   encapsulation: ViewEncapsulation.None
 })
 export class MyEntriesComponent implements OnInit {
+  // Endpoint return this type, entry list is parameter content.
   jpaPagination: JPAPagination = new JPAPagination();
   entries: Entry[] = new Array<Entry>();
   
@@ -40,6 +41,7 @@ export class MyEntriesComponent implements OnInit {
 
     this.apiService.get("/entries/pagination", params).subscribe(
       response => {
+        //The endpoint should return Pagination object
         this.jpaPagination = response;
         this.entries = this.jpaPagination.content;
 
