@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnChanges, ViewEncapsulation, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import { Pagination } from './pagination.model';
 declare var jquery: any;
 declare var $: any;
@@ -9,7 +9,7 @@ declare var $: any;
   styleUrls: ['./pagination.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnChanges {
 
   @Input() pagination: Pagination = new Pagination();
   @Output() goToNextPage: EventEmitter<number> = new EventEmitter<number>();
@@ -27,9 +27,15 @@ export class PaginationComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    this.varifyPagination ();
+  ngOnChanges(changes: SimpleChanges): void {
+    // changes['pagination'].currentValue;
+  }
+
+  ngDoCheck() {
     this.updateButtons();
+  }
+
+  ngOnInit() {
   }
 
   updateButtons () {
@@ -95,45 +101,36 @@ export class PaginationComponent implements OnInit {
     }
   }
 
-  updatePagination() {
-    this.goToNextPage.emit(this.nextPage);
-    this.updateButtons();
-  }
-
   clickFirstPage () {
-    this.varifyPagination ();
     this.nextPage = 1;
-    this.updatePagination();
+    
+    this.goToNextPage.emit(this.nextPage);
   }
 
   clickPreviousPage () {
-    this.varifyPagination ();
-
     if (this.pagination.isFirstPage || this.pagination.currentPage <= 1) {
       this.nextPage = 1;
     } else {
       this.nextPage = Number(this.pagination.currentPage) - 1;
     }
 
-    this.updatePagination();
+    this.goToNextPage.emit(this.nextPage);
   }
 
   clickNextPage () {
-    this.varifyPagination ();
-
     if (this.pagination.isLastPage 
       || this.pagination.currentPage >= this.pagination.totalPages) {
       this.nextPage = this.pagination.currentPage;
     } else {
       this.nextPage = Number(this.pagination.currentPage) + 1;
     }
-    this.updatePagination();
+    
+    this.goToNextPage.emit(this.nextPage);
   }
 
   clickLastPage () {
-    this.varifyPagination ();
-
     this.nextPage = this.pagination.totalPages;
-    this.updatePagination();
+    
+    this.goToNextPage.emit(this.nextPage);
   }
 }

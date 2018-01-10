@@ -17,6 +17,8 @@ import { JPAPagination } from '../../shared/model';
 export class MyEntriesComponent implements OnInit {
   jpaPagination: JPAPagination = new JPAPagination();
   entries: Entry[] = new Array<Entry>();
+  
+  // For pagination component.
   pagination: Pagination = new Pagination();
   message: Message = new Message();
   page: number = 0;
@@ -25,9 +27,6 @@ export class MyEntriesComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.pagination.currentPage = 1;
-    this.pagination.totalPages = 6;
-  
     this.getEntries ();
   }
 
@@ -35,12 +34,12 @@ export class MyEntriesComponent implements OnInit {
     const params = new HttpParams()
       .set('create_user_id', '8')
       .set('sort', 'createTime,desc')
-      .set('page', (this.page - 1) + '')
-      .set('size', this.defaultPageSize + '');
+      .set('page', (this.page - 1) + '') // first page is 0 in stupid JPA. So page need to minus 1. 
+      .set('size', this.defaultPageSize + '')
+      .set('with_comments', 'true');
 
     this.apiService.get("/entries/pagination", params).subscribe(
       response => {
-        console.log(response);
         this.jpaPagination = response;
         this.entries = this.jpaPagination.content;
 
@@ -54,25 +53,24 @@ export class MyEntriesComponent implements OnInit {
         this.message.type = MESSAGE_TYPE.ERROR;
       },
       () => {
-        this.buildPagination(this.jpaPagination.number, this.jpaPagination.totalPages);
+        this.updatePagination(this.jpaPagination.number, this.jpaPagination.totalPages);
       }
     );
   }
 
+  // pagination callback method, it will be triggered when click pagination buttons.
+  // so retreve new list should be written here.
   goNextPage(nextPage: number) {
     this.page = nextPage;
     this.pagination.currentPage = nextPage;
-    console.log("my-entries nextPage:" + nextPage);
 
     this.getEntries ();
   }
 
-  buildPagination (currentPage: number, totalPages: number) {
-    
+  //pagination should be updated every times refresh the list.
+  updatePagination (currentPage: number, totalPages: number) {
+    // first page is 0 in fucking stupid JPA. So page need to add 1. 
     this.pagination.currentPage = currentPage + 1;
     this.pagination.totalPages = totalPages;
-
-    console.log("buildPagination jpaPagination.number: " + this.jpaPagination.number);
-    console.log("buildPagination jpaPagination.totalPages: " + this.jpaPagination.totalPages);
   }
 }
