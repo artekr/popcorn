@@ -7,6 +7,9 @@ import { environment } from '../../../environments/environment';
 import { ApiService } from '../../core';
 import { AlertService } from '../../shared/services';
 import { JPAPagination } from '../../shared/model';
+import { User } from '../../core';
+import { Subscription } from 'rxjs/Subscription';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-my-entries',
@@ -15,6 +18,9 @@ import { JPAPagination } from '../../shared/model';
   encapsulation: ViewEncapsulation.None
 })
 export class MyEntriesComponent implements OnInit {
+  user: User = new User();
+  subscription: Subscription;
+
   // Endpoint return this type, entry list is parameter content.
   jpaPagination: JPAPagination = new JPAPagination();
   entries: Entry[] = new Array<Entry>();
@@ -25,15 +31,25 @@ export class MyEntriesComponent implements OnInit {
   page: number = 0;
   defaultPageSize: number = 3;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private profileService: ProfileService
+  ) { }
 
   ngOnInit() {
-    this.getEntries ();
+    this.user.id = 0;
+    this.subscription = this.profileService.getUserSubject().subscribe(
+      user => {
+        this.user = user;
+        this.getEntries ();
+      },
+      error => console.log(error)
+    );
   }
 
   getEntries() {
     const params = new HttpParams()
-      .set('create_user_id', '8')
+      .set('create_user_id', this.user.id + '')
       .set('sort', 'createTime,desc')
       .set('page', (this.page - 1) + '') // first page is 0 in stupid JPA. So page need to minus 1. 
       .set('size', this.defaultPageSize + '')
@@ -51,8 +67,7 @@ export class MyEntriesComponent implements OnInit {
         }
       },
       (err: HttpErrorResponse) => {
-        this.message.content = err.error.error_message;
-        this.message.type = MESSAGE_TYPE.ERROR;
+        console.log(err);
       },
       () => {
         this.updatePagination(this.jpaPagination.number, this.jpaPagination.totalPages);
@@ -74,5 +89,9 @@ export class MyEntriesComponent implements OnInit {
     // first page is 0 in fucking stupid JPA. So page need to add 1. 
     this.pagination.currentPage = currentPage + 1;
     this.pagination.totalPages = totalPages;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

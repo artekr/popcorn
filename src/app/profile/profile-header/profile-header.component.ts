@@ -21,8 +21,6 @@ export class ProfileHeaderComponent implements OnInit {
       user => this.user = user,
       error => console.log(error)
     );
-    console.log("ProfileHeaderComponent:");
-    console.log(this.user);
   }
 
   ngOnDestroy() {
