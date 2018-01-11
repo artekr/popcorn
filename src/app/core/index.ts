@@ -4,3 +4,4 @@ export * from './jwt.service';
 export * from './user.service';
 export * from './exception.service';
 export * from './auth';
+export * from './user.model';

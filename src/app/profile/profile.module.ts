@@ -11,7 +11,7 @@ import { EntriesModule } from '../entries';
 import { SharedModule } from '../shared';
 import { AlertService } from '../shared/services';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
+import { ProfileService } from './profile.service';
 
 @NgModule({
   imports: [
@@ -29,7 +29,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MyWordbooksComponent
   ],
   providers: [
-    AlertService
+    AlertService,
+    ProfileService
   ]
 })
 export class ProfileModule { }

@@ -9,15 +9,15 @@
     <td>
       <table>
         <tr>
-          <td colspan="3" class="header-title">Ying</td>
+          <td colspan="3" class="header-title">{{ user.username }}</td>
         </tr>
         <tr>
-          <td colspan="3" class="header-subtitle">Xxxxx xxxxxxx x xx x</td>
+          <td colspan="3" class="header-subtitle">{{ user.bio }}</td>
         </tr>
         <tr class="header-subtitle">
-          <td>词条: 106</td>
-          <td>被赞: 1</td>
-          <td>被踩: 1121</td>
+          <td>词条: {{ user.entry_count }}</td>
+          <td>被赞: {{ user.be_upvoted_count }}</td>
+          <td>被踩: {{ user.be_downvoted_count }}</td>
         </tr>
       </table>
     </td>
