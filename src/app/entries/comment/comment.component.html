@@ -5,9 +5,18 @@
     </div>
     <div class="extra content">
       <div *ngFor="let comment of comments" class="comment">
+        <a class="avatar"
+           [routerLink]="['/profile', comment.create_user.username]"
+           routerLinkActive="active">
+          <img src="/assets/images/elliot.jpg">
+        </a>
         <div class="content">
-          <a class="author">{{ comment.create_user.username }}</a>
-          <div class="metadata">
+          <a class="author"
+             [routerLink]="['/profile', comment.create_user.username]"
+             routerLinkActive="active">
+            {{ comment.create_user.username }}
+          </a>
+          <div class="float right metadata">
             <span class="date">{{ comment.create_time | convertToDate }}</span>
           </div>
           <div class="text">
