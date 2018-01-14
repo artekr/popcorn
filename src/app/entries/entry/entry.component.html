@@ -1,13 +1,14 @@
 <div class="ui fluid card entry-card">
   <div class="content entry-main">
-    <a class="right floated author meta"
-       [routerLink]="['/profile', entry.create_user.username]"
-       routerLinkActive="active">
-      <img class="ui avatar image" src="/assets/images/elliot.jpg">
-      <span>{{ entry.create_user.username }}</span>
+    <div class="right floated author meta">
+      <a [routerLink]="['/profile', entry.create_user.username]"
+        routerLinkActive="active">
+        <img class="ui avatar image" src="/assets/images/elliot.jpg">
+        <span>{{ entry.create_user.username }}</span>
+      </a>
       <span class="span-dot"></span>
       <span style="font-size: 0.85em;">{{ entry.create_time | convertToDate }}</span>
-    </a>
+    </div>
     <div class="header">
       <a [routerLink]="['/']" routerLinkActive="active">{{ entry.name }}</a>
     </div>
