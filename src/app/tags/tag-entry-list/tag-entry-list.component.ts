@@ -1,4 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+
+import { Entry } from '../../entries';
+import { TagService } from '../shared/tag.service';
 
 @Component({
   selector: 'app-tag-entry-list',
@@ -8,9 +12,39 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class TagEntryListComponent implements OnInit {
 
-  constructor() { }
+  private tag_id : number;
+  private entries: Entry[];
+
+  constructor(
+    private route     : ActivatedRoute,
+    private router    : Router,
+    private tagService: TagService
+  ) {}
 
   ngOnInit() {
+    this.queryEntries();
   }
 
+  queryEntries(): void {
+    this.route.url.subscribe(data => {
+      // Get the last piece of the URL (it's either 'login' or 'register')
+      this.tag_id = Number(data[data.length - 1].path);
+      this.tagService.queryEntriesByTagId(this.tag_id)
+      .subscribe(
+        data => {
+          this.entries = data
+        },
+        error => {
+          // TODO: error handling
+          console.log("error " + error);
+        }
+      );  
+    },
+    error => {
+      // TODO: error handling
+      console.log("error :" + error);
+    }
+  );
+  }
+  
 }

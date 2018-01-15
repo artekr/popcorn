@@ -6,11 +6,11 @@ import { TagEntryListComponent } from './tag-entry-list/tag-entry-list.component
 
 const routes: Routes = [
   {
-    path: 'tag/:id',
+    path: '',
     component: TagsComponent,
     children: [
       {
-        path: '',
+        path: 'tag/:id',
         component: TagEntryListComponent,
       }
     ]

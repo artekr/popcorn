@@ -1,8 +1,7 @@
 <div class="ui fluid card entry-card">
   <div class="content entry-main">
     <div class="right floated author meta">
-      <a [routerLink]="['/profile', entry.create_user.username]"
-        routerLinkActive="active">
+      <a [routerLink]="['/profile', entry.create_user.username]" routerLinkActive="active">
         <img class="ui avatar image" src="/assets/images/elliot.jpg">
         <span>{{ entry.create_user.username }}</span>
       </a>
@@ -25,7 +24,10 @@
       </div>
       <div class="entry-tags">
         <!-- <i class="tags icon"></i> -->
-        <a *ngFor="let tag of entry.tags" class="ui mini blue label">
+        <a *ngFor="let tag of entry.tags"
+           [routerLink]="['/tag', tag.id]"
+           routerLinkActive="active"
+           class="ui mini blue label">
           {{ tag.name }}
         </a>
       </div>

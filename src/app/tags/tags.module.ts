@@ -5,6 +5,7 @@ import { TagsRoutingModule } from './tags-routing.module';
 import { SharedModule } from '../shared';
 import { TagsComponent } from './tags.component';
 import { TagEntryListComponent } from './tag-entry-list/tag-entry-list.component';
+import { TagService } from './shared/tag.service';
 
 import { EntriesModule } from '../entries';
 
@@ -18,6 +19,9 @@ import { EntriesModule } from '../entries';
   declarations: [
     TagsComponent,
     TagEntryListComponent
+  ],
+  providers: [
+    TagService
   ]
 })
 export class TagsModule { }
