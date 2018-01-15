@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
   }
 
   queryEntries(): void {
-    this.entryService.query("latest_entries?with_comments=true")
+    this.entryService.query("latest_entries")
         .subscribe(entries => this.entries = entries);
   }
 

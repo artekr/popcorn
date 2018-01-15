@@ -10,6 +10,7 @@ export class Entry {
     status        : string;
     upVotesCount  : number;
     downVotesCount: number;
+    commentCount  : number;
     create_time   : string;
     update_time?  : string;
     create_user?  : User;

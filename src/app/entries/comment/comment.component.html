@@ -1,9 +1,11 @@
 <div class="entry-comment">
   <div class="ui small minimal comments fluid card">
     <div class="content">
-      <h4>{{ comments.length }} 条评论</h4>
+      <h4>{{ comment_count }} 条评论</h4>
     </div>
     <div class="extra content">
+      <div *ngIf="comment_count == 0" >暂无评论</div>
+      <div *ngIf="isLoading && comment_count > 0" class="ui active centered inline loader"></div>
       <div *ngFor="let comment of comments" class="comment">
         <a class="avatar"
            [routerLink]="['/profile', comment.create_user.username]"

@@ -15,11 +15,13 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class CommentComponent implements OnInit {
-  @Input() comments: Comment[];
-  @Input() entry_id: number;
+  @Input() comment_count: number;
+  @Input() comments     : Comment[];
+  @Input() entry_id     : number;
 
-  private comment: string = "";
+  private comment: string       = "";
   private currentUserId: string = "";
+  private isLoading: boolean    = true;
 
   constructor(
     private apiService   : ApiService,
@@ -31,6 +33,23 @@ export class CommentComponent implements OnInit {
     if (this.cookieService.check('userid')) {
       this.currentUserId = this.cookieService.get('userid');
     }
+    if (this.comment_count > 0) {
+      this.getEntryComments(this.entry_id);
+    }
+  }
+
+  getEntryComments(entry_id: number) {
+    this.apiService.get('/entries?id=' + String(entry_id) + '&with_comments=true')
+      .subscribe(
+        data => {
+          this.comments = data[0].comments;
+          this.isLoading = false;
+        },
+        error => {
+          // TODO: error handling
+          console.log("error " + error);
+        }
+      );
   }
 
   onDeleteComment(comment_id: number, comment: Comment) {
