@@ -14,7 +14,7 @@ import {
 
 export class MainComponent implements OnInit {
 
-  entries: Entry[];
+  private entries: Entry[];
 
   constructor(private entryService: EntryService) { }
 
