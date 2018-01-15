@@ -1,4 +1,4 @@
-import { Tag } from "./entries";
+import { Tag } from "./tags";
 
 export const HOTTAGS: Tag[] = [
   {

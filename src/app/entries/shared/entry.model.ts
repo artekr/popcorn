@@ -1,4 +1,4 @@
-import { Tag } from "./tag.model";
+import { Tag } from "../../tags/shared/tag.model";
 import { Comment } from "./comment.model";
 import { User } from "../../core/user.model";
 

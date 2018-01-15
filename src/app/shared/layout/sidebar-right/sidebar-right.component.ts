@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Tag } from '../../../entries';
+import { Tag } from '../../../tags';
 import { HOTTAGS } from '../../../mock-tags';
 
 @Component({

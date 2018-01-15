@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppComponent } from './app.component';
 
@@ -9,7 +10,7 @@ import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { ProfileModule } from './profile/profile.module';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { TagsModule } from './tags/tags.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     SharedModule,
     HomeModule,
     AboutModule,
-    AppRoutingModule,
-    ProfileModule
+    ProfileModule,
+    TagsModule,
+    AppRoutingModule
   ],
   providers: [],
   exports:[BrowserModule],
