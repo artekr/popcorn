@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 import { Entry } from '../../entries';
 import { TagService } from '../shared/tag.service';
@@ -17,7 +17,6 @@ export class TagEntryListComponent implements OnInit {
 
   constructor(
     private route     : ActivatedRoute,
-    private router    : Router,
     private tagService: TagService
   ) {}
 
