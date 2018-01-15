@@ -8,6 +8,7 @@ export const ENTRIES: Entry[] = [{
     "status": "VALID",
     "upVotesCount": 0,
     "downVotesCount": 0,
+    commentCount: 2,
     "create_time": "2017-09-23T21:21:15.508-04:00[UTC-04:00]",
     "tags": [
       {
@@ -113,6 +114,7 @@ export const ENTRIES: Entry[] = [{
     "status": "VALID",
     "upVotesCount": 0,
     "downVotesCount": 0,
+    commentCount: 3,
     "create_time": "2017-09-23T21:21:15.508-04:00[UTC-04:00]",
     "tags": [
       {
