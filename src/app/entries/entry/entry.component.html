@@ -9,7 +9,7 @@
       <span style="font-size: 0.85em;">{{ entry.create_time | convertToDate }}</span>
     </div>
     <div class="header">
-      <a [routerLink]="['/']" routerLinkActive="active">{{ entry.name }}</a>
+      <a [routerLink]="['/entry', entry.name]" routerLinkActive="active">{{ entry.name }}</a>
     </div>
     <div class="description">
       <div class="entry-definition">

@@ -22,6 +22,10 @@ export class EntryService {
     return this.apiService.get('/entries/' + type);
   }
 
+  queryEntriesByName(name: string): Observable<Entry[]> {
+    return this.apiService.get('/entries?name=' + name);
+  }
+
   submitEntry(entry: object = {}) {
     this.apiService.post('/entries', entry)
       .subscribe(

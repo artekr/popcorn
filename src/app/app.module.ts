@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { ProfileModule } from './profile/profile.module';
 import { TagsModule } from './tags/tags.module';
+import { EntriesModule } from './entries/entries.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TagsModule } from './tags/tags.module';
     AboutModule,
     ProfileModule,
     TagsModule,
+    EntriesModule,
     AppRoutingModule
   ],
   providers: [],
