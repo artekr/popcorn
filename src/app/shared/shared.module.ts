@@ -9,6 +9,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { ShowAuthedDirective } from '../core/auth/show-authed.directive';
 import { EntryService } from '../entries/shared';
 import { UserService } from '../core/user.service';
+import { MessageComponent } from './message/message.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { HotTagsComponent } from '../tags/hot-tags/hot-tags.component'
 import {
   AlertComponent,
   HeaderComponent, 
@@ -16,8 +19,6 @@ import {
   SidebarRightComponent,
   AddEntryComponent
 } from './layout';
-import { MessageComponent } from './message/message.component';
-import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     SidebarRightComponent,
     ShowAuthedDirective,
     MessageComponent,
-    PaginationComponent
+    PaginationComponent,
+    HotTagsComponent
   ],
   exports: [
     CommonModule,
