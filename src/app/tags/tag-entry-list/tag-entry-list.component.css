@@ -1,0 +1,8 @@
+.tag-entry-list.header {
+  color: #494949;
+  margin: 20px 0px 30px !important;
+}
+
+.tag-entry-list>.icon {
+  font-size: 1.15em !important;
+}

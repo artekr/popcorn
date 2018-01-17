@@ -37,13 +37,13 @@ export class TagEntryListComponent implements OnInit {
           // TODO: error handling
           console.log("error " + error);
         }
-      );  
+      );
     },
     error => {
       // TODO: error handling
       console.log("error :" + error);
     }
-  );
+    );
   }
   
 }
