@@ -85,7 +85,7 @@ export class HeaderComponent implements OnInit {
               response.results.push({
                 title : item.name,
                 // TODO: replace proper url
-                url: 'http://bopucidian.com/entry/id/'+item.id
+                url: '/entry/'+item.name
               });
             });
             return response;
