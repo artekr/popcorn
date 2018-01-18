@@ -16,12 +16,12 @@ declare var $: any;
 })
 export class CommentComponent implements OnInit {
   @Input() comment_count: number;
-  @Input() comments     : Comment[];
+  @Input() comments     : Comment[] = Array<Comment>();
   @Input() entry_id     : number;
 
   private comment: string       = "";
   private currentUserId: string = "";
-  private isLoading: boolean    = true;
+  private isLoading: boolean    = false;
 
   constructor(
     private apiService   : ApiService,
@@ -34,6 +34,7 @@ export class CommentComponent implements OnInit {
       this.currentUserId = this.cookieService.get('userid');
     }
     if (this.comment_count > 0) {
+      this.isLoading = true;
       this.getEntryComments(this.entry_id);
     }
   }
@@ -57,6 +58,7 @@ export class CommentComponent implements OnInit {
         .subscribe(
           data => {
             this.comments.splice(this.comments.indexOf(comment), 1);
+            this.comment_count = this.comments.length;
           },
           error => {
             // TODO: error handling
@@ -87,6 +89,7 @@ export class CommentComponent implements OnInit {
           data => {
             this.comments.unshift(data);
             this.comment = "";
+            this.comment_count = this.comments.length;
           },
           error => {
             // TODO: error handling
