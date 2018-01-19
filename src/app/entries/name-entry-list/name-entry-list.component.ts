@@ -25,9 +25,9 @@ export class NameEntryListComponent implements OnInit {
   }
 
   queryEntries() {
-    this.route.url.subscribe(data => {
+    this.route.params.subscribe(params => {
       // Get the last piece of the URL (it's either 'login' or 'register')
-      this.entry_name = data[data.length - 1].path;
+      this.entry_name = params['name'];
       this.entryService.queryEntriesByName(this.entry_name)
       .subscribe(
         data => {
@@ -37,13 +37,8 @@ export class NameEntryListComponent implements OnInit {
           // TODO: error handling
           console.log("error " + error);
         }
-      );
-    },
-    error => {
-      // TODO: error handling
-      console.log("error :" + error);
-    }
-    );
+      );  
+    });
   }
 
 }

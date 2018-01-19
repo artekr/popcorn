@@ -25,9 +25,8 @@ export class TagEntryListComponent implements OnInit {
   }
 
   queryEntries(): void {
-    this.route.url.subscribe(data => {
-      // Get the last piece of the URL (it's either 'login' or 'register')
-      this.tag_id = Number(data[data.length - 1].path);
+    this.route.params.subscribe(params => {
+      this.tag_id = +params['id']; // (+) converts string 'id' to a number
       this.tagService.queryEntriesByTagId(this.tag_id)
       .subscribe(
         data => {
@@ -38,12 +37,7 @@ export class TagEntryListComponent implements OnInit {
           console.log("error " + error);
         }
       );
-    },
-    error => {
-      // TODO: error handling
-      console.log("error :" + error);
-    }
-    );
+   });
   }
   
 }
