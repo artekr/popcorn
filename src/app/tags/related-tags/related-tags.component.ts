@@ -16,6 +16,7 @@ export class RelatedTagsComponent implements OnInit {
 
   private tag_id     : number;
   private relatedTags: Tag[];
+  private isLoading  : boolean = false;
 
   constructor(
     private router    : Router,
@@ -23,6 +24,7 @@ export class RelatedTagsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.queryRelatedTags();
   }
 
@@ -35,6 +37,7 @@ export class RelatedTagsComponent implements OnInit {
       .subscribe(
         data => {
           this.relatedTags = data
+          this.isLoading   = false;
         },
         error => {
           // TODO: error handling
