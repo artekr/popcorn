@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Entry } from '../../entries';
 import { ApiService } from '../../core/api.service';
+import { Tag } from './tag.model';
 
 declare var $: any;
 
@@ -18,5 +19,8 @@ export class TagService {
     return this.apiService.get('/entries/tags/' + String(tag_id));
   }
 
+  queryRelatedTagsById(tag_id: number): Observable<Tag[]> {
+    return this.apiService.get('/tags/related_tags/' + String(tag_id));
+  }
 
 }
