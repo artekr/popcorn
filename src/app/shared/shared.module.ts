@@ -11,7 +11,9 @@ import { EntryService } from '../entries/shared';
 import { UserService } from '../core/user.service';
 import { MessageComponent } from './message/message.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { HotTagsComponent } from '../tags/hot-tags/hot-tags.component'
+import { HotTagsComponent } from '../tags/hot-tags/hot-tags.component';
+import { RelatedTagsComponent } from '../tags/related-tags/related-tags.component';
+import { RelatedEntriesComponent } from '../entries/related-entries/related-entries.component';
 import {
   AlertComponent,
   HeaderComponent, 
@@ -36,7 +38,9 @@ import {
     ShowAuthedDirective,
     MessageComponent,
     PaginationComponent,
-    HotTagsComponent
+    HotTagsComponent,
+    RelatedTagsComponent,
+    RelatedEntriesComponent
   ],
   exports: [
     CommonModule,

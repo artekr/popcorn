@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'tag/:id',
-        component: TagEntryListComponent,
+        component: TagEntryListComponent
       }
     ]
   }
