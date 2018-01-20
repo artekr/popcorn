@@ -60,6 +60,7 @@ export class CommentComponent implements OnInit {
           data => {
             this.comments.splice(this.comments.indexOf(comment), 1);
             this.comment_count = this.comments.length;
+            this.commentNumber.emit(this.comment_count);
           },
           error => {
             // TODO: error handling
