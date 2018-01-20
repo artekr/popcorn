@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, Input } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { Entry } from '../../entries';
@@ -10,11 +10,11 @@ import { TagService } from '../shared/tag.service';
   styleUrls: ['./tag-entry-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TagEntryListComponent implements OnInit {
+export class TagEntryListComponent implements OnInit, OnDestroy {
 
-  private tag_id : number;
-  private entries: Entry[];
-
+  private tag_name: string;
+  private entries : Entry[];
+  private sub     : any;
   constructor(
     private route     : ActivatedRoute,
     private tagService: TagService
@@ -25,9 +25,13 @@ export class TagEntryListComponent implements OnInit {
   }
 
   queryEntries(): void {
-    this.route.params.subscribe(params => {
-      this.tag_id = +params['id']; // (+) converts string 'id' to a number
-      this.tagService.queryEntriesByTagId(this.tag_id)
+    // this.route.params.subscribe(params => {
+    //   // Get the last piece of the URL (it's either 'login' or 'register')
+    //   this.tag_name = params['name'];
+    // });
+    this.sub = this.route.params.subscribe(params => {
+      var tag_id = +params['id']; // (+) converts string 'id' to a number
+      this.tagService.queryEntriesByTagId(tag_id)
       .subscribe(
         data => {
           this.entries = data
@@ -38,6 +42,12 @@ export class TagEntryListComponent implements OnInit {
         }
       );
    });
+  }
+
+  ngOnDestroy() {
+    if(this.sub != null) {
+      this.sub.unsubscribe();
+    }
   }
   
 }

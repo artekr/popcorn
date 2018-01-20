@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { Entry } from '../../entries';
@@ -10,10 +10,11 @@ import { EntryService } from '../shared/entry.service';
   styleUrls: ['./name-entry-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class NameEntryListComponent implements OnInit {
+export class NameEntryListComponent implements OnInit, OnDestroy {
 
   private entries   : Entry[];
   private entry_name: string;
+  private sub       : any;
 
   constructor(
     private route       : ActivatedRoute,
@@ -25,7 +26,7 @@ export class NameEntryListComponent implements OnInit {
   }
 
   queryEntries() {
-    this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.entry_name = params['name'];
       this.entryService.queryEntriesByName(this.entry_name)
@@ -39,6 +40,12 @@ export class NameEntryListComponent implements OnInit {
         }
       );  
     });
+  }
+  
+  ngOnDestroy() {
+    if(this.sub != null) {
+      this.sub.unsubscribe();
+    }
   }
 
 }
