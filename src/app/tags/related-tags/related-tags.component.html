@@ -1,3 +1,10 @@
-<p>
-  related-tags works!
-</p>
+<div class="ui fluid card related-tags-card">
+  <div class="content">
+    <h4 class="ui header">相关标签</h4>
+  </div>
+  <div class="content related-tags-main">
+    <a *ngFor="let tag of relatedTags" class="ui small blue label">
+      {{ tag.name }}
+    </a>
+  </div>
+</div>
