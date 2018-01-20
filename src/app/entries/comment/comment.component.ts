@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, Pipe, PipeTransform, EventEmitter } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { CookieService } from 'ngx-cookie-service';
@@ -9,7 +9,7 @@ import { ApiService } from '../../core/api.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-comment',
+  selector: 'entry-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css'],
   encapsulation: ViewEncapsulation.None
@@ -18,6 +18,7 @@ export class CommentComponent implements OnInit {
   @Input() comment_count: number;
   @Input() comments     : Comment[] = Array<Comment>();
   @Input() entry_id     : number;
+  @Output() commentNumber = new EventEmitter<number>();
 
   private comment: string       = "";
   private currentUserId: string = "";
@@ -90,6 +91,7 @@ export class CommentComponent implements OnInit {
             this.comments.unshift(data);
             this.comment = "";
             this.comment_count = this.comments.length;
+            this.commentNumber.emit(this.comment_count);
           },
           error => {
             // TODO: error handling

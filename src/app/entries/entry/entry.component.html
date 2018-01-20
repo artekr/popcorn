@@ -49,7 +49,7 @@
         <a class="middle aligned content" (click)="this.showComment = !this.showComment">
           <i class="comment outline icon"></i>
           <span *ngIf="this.showComment == false">
-            {{ entry.commentCount }}
+            {{ commentNumber }}
             条评论
           </span>
           <span *ngIf="this.showComment == true">
@@ -76,7 +76,7 @@
       </div>
     </div>
   </div>
-  <app-comment *ngIf="showComment" [comment_count]="entry.commentCount" [entry_id]="entry.id"></app-comment>
+  <entry-comment *ngIf="showComment" [comment_count]="commentNumber" [entry_id]="entry.id" (commentNumber)="commentNumberUpdate($event)"></entry-comment>
 
 </div>
 

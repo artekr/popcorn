@@ -17,7 +17,8 @@ declare var $: any;
 export class EntryComponent implements OnInit {
   @Input() entry: Entry = new Entry();
 
-  showComment: boolean = false;
+  showComment  : boolean = false;
+  commentNumber: number  = 0;
 
   constructor(
     private entryService : EntryService,
@@ -26,6 +27,11 @@ export class EntryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.commentNumber = this.entry.commentCount;
+  }
+
+  commentNumberUpdate(commentNumber: number) {
+    this.commentNumber = commentNumber;
   }
 
   onUpVote() {
