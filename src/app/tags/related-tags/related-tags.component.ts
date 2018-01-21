@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router, UrlTree } from "@angular/router";
 
-import { Tag } from '../shared/tag.model';
-import { TagService } from '../shared/tag.service';
-import { UrlTree, UrlSegmentGroup, UrlSegment } from '@angular/router/src/url_tree';
-import { PRIMARY_OUTLET } from '@angular/router/src/shared';
+import { Tag, TagService } from '../shared';
 
 @Component({
   selector: 'related-tags',
@@ -14,7 +11,6 @@ import { PRIMARY_OUTLET } from '@angular/router/src/shared';
 })
 export class RelatedTagsComponent implements OnInit {
 
-  private tag_id     : number;
   private relatedTags: Tag[];
   private isLoading  : boolean = false;
 
