@@ -10,11 +10,22 @@
   transform:none;
 } */
 
-.ui.entry-card .entry-main {
+.ui.card.entry-card .entry-main {
   padding: 20px 20px 16px;
 }
 
-.entry-card .header a {
+.ui.card.entry-card .entry-author {
+  margin-bottom: 15px;
+}
+
+.ui.card.entry-card .entry-author .avatar {
+  font-size: 0.7em;
+}
+.ui.card.entry-card .entry-author > span {
+ font-size: 0.85em;
+}
+
+.ui.card.entry-card .header a {
   color: inherit;
   font-size: 20px;
 }
@@ -25,7 +36,7 @@
 }
 
 .ui.card.entry-card .content .description {
-  line-height: 1.6;
+  line-height: 1.8;
   color: #424242;
 }
 
