@@ -1,4 +1,3 @@
-<app-message [message]="message"></app-message>
 
 <div class="ui fluid card" *ngFor="let comment of comments">
   <div class="content">
@@ -9,5 +8,7 @@
     <p>{{  comment.content }}</p>
   </div>
 </div>
+
+<app-message [message]="message"></app-message>
 
 <app-pagination [pagination]="pagination" (goToNextPage)="goNextPage($event)"></app-pagination>
