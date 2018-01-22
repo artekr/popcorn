@@ -27,9 +27,10 @@ export class MyEntriesComponent implements OnInit {
   
   // For pagination component.
   pagination: Pagination = new Pagination();
-  message: Message = new Message();
   page: number = 0;
   defaultPageSize: number = 3;
+
+  message: Message = new Message();
 
   constructor(
     private apiService: ApiService,

@@ -1,3 +1,13 @@
-<p>
-  my-comments works!
-</p>
+<app-message [message]="message"></app-message>
+
+<div class="ui fluid card" *ngFor="let comment of comments">
+  <div class="content">
+    <div class="header">{{ comment.entry.name }}</div>
+    <div class="meta">
+      <span>{{ comment.create_time | convertToDate }}</span>
+    </div>
+    <p>{{  comment.content }}</p>
+  </div>
+</div>
+
+<app-pagination [pagination]="pagination" (goToNextPage)="goNextPage($event)"></app-pagination>

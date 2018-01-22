@@ -33,7 +33,8 @@ import { EntriesRoutingModule } from './entries-routing.module';
   ],
   exports: [
     EntryListComponent,
-    EntryComponent
+    EntryComponent,
+    ConvertToDatePipe
   ]
 })
 export class EntriesModule { }

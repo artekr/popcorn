@@ -1,4 +1,5 @@
 import { User } from "../../core/user.model";
+import { Entry } from "./entry.model";
 
 export class Comment {
     id          : number;
@@ -8,4 +9,5 @@ export class Comment {
     create_user : User;
     update_time : string;
     update_user : User;
+    entry      ?: Entry;
 }
