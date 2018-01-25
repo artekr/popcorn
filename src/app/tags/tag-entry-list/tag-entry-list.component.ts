@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { Entry } from '../../entries';
 import { TagService } from '../shared/tag.service';
+import { SharedService } from '../../shared';
 
 @Component({
   selector: 'app-tag-entry-list',
@@ -15,9 +16,11 @@ export class TagEntryListComponent implements OnInit, OnDestroy {
   private tag_name: string;
   private entries : Entry[];
   private sub     : any;
+
   constructor(
-    private route     : ActivatedRoute,
-    private tagService: TagService
+    private route        : ActivatedRoute,
+    private tagService   : TagService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
@@ -30,8 +33,9 @@ export class TagEntryListComponent implements OnInit, OnDestroy {
       this.tagService.queryEntriesByTagId(tag_id)
       .subscribe(
         response => {
-          this.tag_name = response.requestParameters.name;
-          this.entries = response.data.content;
+          this.tag_name = response['requestParameters']['name'];
+          this.entries  = response['data']['content'];
+          this.sharedService.emitChange(response['requestParameters']['id']);
         },
         error => {
           // TODO: error handling

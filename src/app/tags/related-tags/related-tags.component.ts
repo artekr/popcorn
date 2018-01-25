@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, UrlTree } from "@angular/router";
 
 import { Tag, TagService } from '../shared';
+import { SharedService } from '../../shared/services/shared.service';
 
 @Component({
   selector: 'related-tags',
@@ -16,19 +17,20 @@ export class RelatedTagsComponent implements OnInit {
 
   constructor(
     private router    : Router,
-    private tagService: TagService
+    private tagService: TagService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.queryRelatedTags();
+    this.sharedService.changeEmitted$.subscribe(
+      tag_id => {
+        this.queryRelatedTagsById(tag_id);
+      }
+    );
   }
 
-  queryRelatedTags() {
-    const tree: UrlTree = this.router.parseUrl(this.router.url);
-    const urlSegments =  tree.root.children['primary'].segments;
-    var tag_id = +urlSegments[urlSegments.length - 1].path; // (+) converts string 'id' to a number
-    //console.log("related tag id: " + tag_id);
+  queryRelatedTagsById(tag_id: number) {
     this.tagService.queryRelatedTagsById(tag_id)
       .subscribe(
         data => {
