@@ -16,7 +16,7 @@ export class TagService {
   ) {}
 
   queryEntriesByTagId(tag_id: number): Observable<Entry[]> {
-    return this.apiService.get('/entries/tags/' + String(tag_id));
+    return this.apiService.get('/entries/tags/' + String(tag_id) + '/pagination');
   }
 
   queryRelatedTagsById(tag_id: number): Observable<Tag[]> {

@@ -25,16 +25,13 @@ export class TagEntryListComponent implements OnInit, OnDestroy {
   }
 
   queryEntries(): void {
-    // this.route.params.subscribe(params => {
-    //   // Get the last piece of the URL (it's either 'login' or 'register')
-    //   this.tag_name = params['name'];
-    // });
     this.sub = this.route.params.subscribe(params => {
       var tag_id = +params['id']; // (+) converts string 'id' to a number
       this.tagService.queryEntriesByTagId(tag_id)
       .subscribe(
-        data => {
-          this.entries = data
+        response => {
+          this.tag_name = response.requestParameters.name;
+          this.entries = response.data.content;
         },
         error => {
           // TODO: error handling
