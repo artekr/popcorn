@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Tag } from '../shared/tag.model';
-import { HOTTAGS } from '../../mock-tags';
+import { Tag, TagService } from '../shared';
 
 @Component({
   selector: 'hot-tags',
@@ -11,11 +10,22 @@ import { HOTTAGS } from '../../mock-tags';
 })
 export class HotTagsComponent implements OnInit {
 
-  hotTags: Tag[] = HOTTAGS;
+  private hotTags: Tag[];
 
-  constructor() { }
+  constructor(
+    private tagService: TagService
+  ) {}
 
   ngOnInit() {
+    this.tagService.queryHotTags().subscribe(
+      data => {
+        this.hotTags = data
+      },
+      error => {
+        // TODO: error handling
+        console.log("error " + error);
+      }
+    );
   }
 
 }
