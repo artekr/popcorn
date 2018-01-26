@@ -49,4 +49,8 @@ export class EntryService {
     return this.apiService.post('/entries/' + String(entry_id) + '/down_votes');
   }
 
+  queryRelatedEntriesByName(entry_name: string): Observable<Entry[]> {
+    return this.apiService.get('/entries/related_entries/' + entry_name + '/pagination');
+  }
+
 }

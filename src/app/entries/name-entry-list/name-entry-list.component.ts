@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 
 import { Entry } from '../../entries';
 import { EntryService } from '../shared/entry.service';
+import { SharedService } from '../../shared/services/shared.service';
 
 @Component({
   selector: 'app-name-entry-list',
@@ -17,8 +18,9 @@ export class NameEntryListComponent implements OnInit, OnDestroy {
   private sub       : any;
 
   constructor(
-    private route       : ActivatedRoute,
-    private entryService: EntryService
+    private route        : ActivatedRoute,
+    private entryService : EntryService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
@@ -30,15 +32,16 @@ export class NameEntryListComponent implements OnInit, OnDestroy {
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.entry_name = params['name'];
       this.entryService.queryEntriesByName(this.entry_name)
-      .subscribe(
-        data => {
-          this.entries = data
-        },
-        error => {
-          // TODO: error handling
-          console.log("error " + error);
-        }
-      );  
+        .subscribe(
+          data => {
+            this.sharedService.emitEntryName(this.entry_name);
+            this.entries = data;
+          },
+          error => {
+            // TODO: error handling
+            console.log("error " + error);
+          }
+        );  
     });
   }
   
