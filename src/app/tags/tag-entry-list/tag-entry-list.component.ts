@@ -35,7 +35,7 @@ export class TagEntryListComponent implements OnInit, OnDestroy {
         response => {
           this.tag_name = response['requestParameters']['name'];
           this.entries  = response['data']['content'];
-          this.sharedService.emitChange(response['requestParameters']['id']);
+          this.sharedService.emitTagId(response['requestParameters']['id']);
         },
         error => {
           // TODO: error handling

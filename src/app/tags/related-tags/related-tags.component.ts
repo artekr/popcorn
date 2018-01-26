@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router, UrlTree } from "@angular/router";
 
 import { Tag, TagService } from '../shared';
@@ -10,10 +10,11 @@ import { SharedService } from '../../shared/services/shared.service';
   styleUrls: ['./related-tags.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class RelatedTagsComponent implements OnInit {
+export class RelatedTagsComponent implements OnInit, OnDestroy {
 
   private relatedTags: Tag[];
   private isLoading  : boolean = false;
+  private sub        : any;
 
   constructor(
     private router    : Router,
@@ -23,8 +24,8 @@ export class RelatedTagsComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.sharedService.changeEmitted$.subscribe(
-      tag_id => {
+    this.sub = this.sharedService.tagIdEmitted$.subscribe(
+      tag_id => { 
         this.queryRelatedTagsById(tag_id);
       }
     );
@@ -42,6 +43,12 @@ export class RelatedTagsComponent implements OnInit {
           console.log("error " + error);
         }
       );
+  }
+
+  ngOnDestroy() {
+    if(this.sub != null) {
+      this.sub.unsubscribe();
+    }
   }
 
 }
