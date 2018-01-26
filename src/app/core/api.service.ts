@@ -40,8 +40,9 @@ export class ApiService {
   }
 
   get(path: string, params?: HttpParams): Observable<any> {
+    var encodedURL = encodeURI(`${environment.api_url}${path}`);
     return this.http.get(
-      `${environment.api_url}${path}`,
+      encodedURL,
       {
         headers: this.buildHeaders(),
         params: params
@@ -49,8 +50,9 @@ export class ApiService {
   }
 
   post(path: string, body: Object = {}): Observable<any> {
+    var encodedURL = encodeURI(`${environment.api_url}${path}`);
     return this.http.post(
-      `${environment.api_url}${path}`,
+      encodedURL,
       JSON.stringify(body),
       { headers: this.buildHeaders() }
     )
@@ -60,8 +62,9 @@ export class ApiService {
   }
 
   put(path: string, body: Object = {}): Observable<any> {
+    var encodedURL = encodeURI(`${environment.api_url}${path}`);
     return this.http.put(
-      `${environment.api_url}${path}`,
+      encodedURL,
       JSON.stringify(body),
       { headers: this.buildHeaders() }
     )
@@ -71,8 +74,9 @@ export class ApiService {
   }
 
   delete(path: string): Observable<any> {
+    var encodedURL = encodeURI(`${environment.api_url}${path}`);
     return this.http.delete(
-      `${environment.api_url}${path}`,
+      encodedURL,
       { headers: this.buildHeaders() }
     )
       .pipe(
