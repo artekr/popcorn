@@ -4,11 +4,14 @@
   </div>
   <div class="content related-entries-main">
     <div *ngIf="isLoading" class="ui active centered inline loader"></div>
-    <a *ngFor="let entry of relatedEntries"
-      [routerLink]="['/entry', entry.name]"
-      routerLinkActive="active"
-      class="ui small blue label">
-      {{ entry.name }}
-    </a>
+    <div class="ui middle aligned relaxed list">
+      <a *ngFor="let entry of relatedEntries"
+        [routerLink]="['/entry', entry.name]"
+        routerLinkActive="active"
+        class="item">
+        <i class="right triangle icon"></i>
+        {{ entry.name }}
+      </a>
+    </div>
   </div>
 </div>
