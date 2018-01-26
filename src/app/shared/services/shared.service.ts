@@ -5,11 +5,19 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class SharedService {
   // Observable string sources
-  private emitChangeSource = new Subject<any>();
+  private emitTagIdSource = new Subject<any>();
+  private emitEntryNameSource = new Subject<any>();
+
   // Observable string streams
-  changeEmitted$ = this.emitChangeSource.asObservable();
+  tagIdEmitted$ = this.emitTagIdSource.asObservable();
+  entryNameEmitted$ = this.emitEntryNameSource.asObservable();
+  
   // Service message commands
-  emitChange(change: any) {
-    this.emitChangeSource.next(change);
+  emitTagId(change: any) {
+    this.emitTagIdSource.next(change);
   }
+  emitEntryName(change: any) {
+    this.emitEntryNameSource.next(change);
+  }
+
 }
