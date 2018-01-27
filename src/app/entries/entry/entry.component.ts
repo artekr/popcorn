@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { EntryService } from '../shared/entry.service';
 import { Entry } from '../shared/entry.model';
+import { SharedModule } from '../../shared';
 
 declare var $: any;
 
@@ -28,6 +29,9 @@ export class EntryComponent implements OnInit {
 
   ngOnInit() {
     this.commentNumber = this.entry.commentCount;
+    if (SharedModule.isMobile.any()) {
+      $('.entry-meta .list').removeClass("very relaxed");
+    }
   }
 
   commentNumberUpdate(commentNumber: number) {
