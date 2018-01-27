@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 import { UserService } from '../user.service';
 import {
-  AlertService
+  AlertService, SharedModule
 } from '../../shared';
 
 declare var jquery: any; 
@@ -30,8 +30,12 @@ export class AuthComponent implements OnInit {
   ) { 
     this.createForm();
   }
-
+  
   ngOnInit() {
+    if(SharedModule.isMobile.any()) {
+      $('.auth-wrapper').removeClass("three").addClass("one");
+    }
+    
     this.route.url.subscribe(data => {
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.authType = data[data.length - 1].path;
