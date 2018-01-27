@@ -63,4 +63,25 @@ import {
     SharedService
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+  static isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (SharedModule.isMobile.Android() || SharedModule.isMobile.BlackBerry() || SharedModule.isMobile.iOS() || SharedModule.isMobile.Opera() || SharedModule.isMobile.Windows());
+    }
+  };
+}
