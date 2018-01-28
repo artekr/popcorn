@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProfileService } from './profile.service';
 import { ActivatedRoute } from '@angular/router';
+
+import { CookieService } from 'ngx-cookie-service';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,16 +11,29 @@ import { ActivatedRoute } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileComponent implements OnInit {
-  username: string = '';
+  private username: string = '';
+  private pronoun : string = '';
 
   constructor(
     private profileService: ProfileService,
-    private route: ActivatedRoute) {
-      this.route.params.subscribe(params => this.username = params.username);
-      this.profileService.updateUser(this.username);
-  }
+    private route         : ActivatedRoute,
+    private cookieService : CookieService
+  ) {}
 
   ngOnInit() {
+    this.route.params.subscribe(
+      params => { 
+        this.username = params.username;
+        if (this.cookieService.check('username')) {
+          if (this.username == this.cookieService.get('username')){
+            this.pronoun = '我';
+          } else {
+            this.pronoun = 'Ta';
+          }
+        }
+        this.profileService.updateUser(this.username);
+      }
+    );
     
   }
 
