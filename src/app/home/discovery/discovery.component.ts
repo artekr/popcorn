@@ -22,8 +22,7 @@ export class DiscoveryComponent implements OnInit {
   }
 
   queryEntries(): void {
-    this.entryService.query("random_entries")
+    this.entryService.getRandomEntries()
         .subscribe(entries => this.entries = entries);
   }
-
 }

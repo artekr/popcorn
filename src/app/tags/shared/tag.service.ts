@@ -6,10 +6,13 @@ import { Entry } from '../../entries';
 import { ApiService } from '../../core/api.service';
 import { Tag } from './tag.model';
 
+import { HttpParams } from '@angular/common/http';
+
 declare var $: any;
 
 @Injectable()
 export class TagService {
+  defaultPageSize: number = 10;
 
   constructor(
     private apiService: ApiService
@@ -19,8 +22,11 @@ export class TagService {
     return this.apiService.get('/tags/hot_tags');
   }
 
-  queryEntriesByTagId(tag_id: number): Observable<Entry[]> {
-    return this.apiService.get('/entries/tags/' + String(tag_id) + '/pagination');
+  queryEntriesByTagId(tag_id: number, page: number): Observable<Entry[]> {
+    const params = new HttpParams()
+      .set('page', page + '')
+      .set('size', this.defaultPageSize + '');
+    return this.apiService.get('/entries/tags/' + String(tag_id) + '/pagination', params);
   }
 
   queryRelatedTagsById(tag_id: number): Observable<Tag[]> {

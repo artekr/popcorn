@@ -29,7 +29,7 @@ export class MyCommentsComponent implements OnInit {
   // For pagination component.
   pagination: Pagination = new Pagination();
   page: number = 0;
-  defaultPageSize: number = 3;
+  defaultPageSize: number = 10;
 
   constructor(private profileService: ProfileService,
               private apiService: ApiService) { }

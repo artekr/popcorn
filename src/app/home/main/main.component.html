@@ -1,1 +1,5 @@
 <app-entry-list [entries]="entries"></app-entry-list>
+
+<app-message [message]="message"></app-message>
+
+<app-pagination [pagination]="pagination" (goToNextPage)="goToNextPage($event)"></app-pagination>
