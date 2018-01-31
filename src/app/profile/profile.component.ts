@@ -24,12 +24,10 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe(
       params => { 
         this.username = params.username;
-        if (this.cookieService.check('username')) {
-          if (this.username == this.cookieService.get('username')){
-            this.pronoun = '我';
-          } else {
-            this.pronoun = 'Ta';
-          }
+        if (this.username == this.cookieService.get('username')){
+          this.pronoun = '我';
+        } else {
+          this.pronoun = 'Ta';
         }
         this.profileService.updateUser(this.username);
       }
