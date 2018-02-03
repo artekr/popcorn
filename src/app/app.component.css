@@ -1,6 +1,7 @@
 .app-main {
     padding: 15px 10px;
-    width: 900px !important;
+    width: 920px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-top: 4em;
 }
