@@ -2,3 +2,7 @@
   color: #424242;
   padding: 20px 0px 10px;
 }
+
+.about p,li {
+  line-height: 1.6;
+}
