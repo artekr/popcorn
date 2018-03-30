@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://xdbx.us:8443'
+  // api_url: 'https://127.0.0.1:8443'
+  api_url: 'https://bopu.fun:8443'
 };
