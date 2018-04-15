@@ -1,65 +1,131 @@
-<div id="nav-wrapper">
-  <div class="ui secondary menu container">
-    <a class="nav-logo item" routerLink="/" routerLinkActive="active">
-      <img src="/assets/images/nav_logo.png">
-    </a>
-    <a class="item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <i class="home icon"></i>
-      首页
-    </a>
-    <a class="item" routerLink="/hot" routerLinkActive="active">
-      <i class="fire icon"></i>
-      热门发现
-    </a>
-    <a class="item" routerLink="/discovery" routerLinkActive="active">
-      <i class="world icon"></i>
-      随便看看
-    </a>
-    <div class="right menu">
-      <!-- <div class="item">
-        <div class="ui left icon action input search-bar">
-          <i class="search icon"></i>
-          <input type="text" placeholder="奇怪的词">
-          <div class="ui blue submit button">搜索</div>
+<div class="ui grid nav-wrapper"> 
+  <!-- id="nav-wrapper" -->
+  <div class="computer only row">
+    <div class="ui secondary menu container">
+      <a class="nav-logo item" routerLink="/" routerLinkActive="active">
+        <img src="/assets/images/nav_logo.png">
+      </a>
+      <a class="item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="home icon"></i>
+        首页
+      </a>
+      <a class="item" routerLink="/hot" routerLinkActive="active">
+        <i class="fire icon"></i>
+        热门发现
+      </a>
+      <a class="item" routerLink="/discovery" routerLinkActive="active">
+        <i class="world icon"></i>
+        随便看看
+      </a>
+      <div class="right menu">
+        <!-- <div class="item">
+          <div class="ui left icon action input search-bar">
+            <i class="search icon"></i>
+            <input type="text" placeholder="奇怪的词">
+            <div class="ui blue submit button">搜索</div>
+          </div>
+        </div> -->
+        <div class="item ui search search-bar">
+          <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="奇怪的词">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
         </div>
-      </div> -->
-      <div class="item ui search search-bar">
-        <div class="ui icon input">
-          <input class="prompt" type="text" placeholder="奇怪的词">
-          <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-      </div>
-      <div class="item">
-        <!-- Show this for logged out users -->
-        <div *showAuthed="false" class="ui text menu">
-          <a class="item" routerLink="/login" routerLinkActive="active">
-            登录
-          </a>
-          <a class="item" routerLink="/register" routerLinkActive="active">
-            注册
-          </a>
-        </div>
-
-        <!-- Show this for logged in users -->
-        <!-- TODO -->
-        <div *showAuthed="true" class="ui item" (click)="showProfileDropdown()">
-          <div class="ui icon top right pointing dropdown">
-            <span>{{ username }}</span>
-            <i class="icon dropdown"></i>
-            <div class="menu">
-              <a class="item" [routerLink]="['/profile', username]" routerLinkActive="active"><i class="user icon"></i>个人主页</a>
-              <a class="item"><i class="setting icon"></i>账号管理</a>
-              <a class="item" (click)="logout()"><i class="power icon"></i>退出</a>
+        <div class="item">
+          <!-- Show this for logged out users -->
+          <div *showAuthed="false" class="ui text menu">
+            <a class="item" routerLink="/login" routerLinkActive="active">
+              登录
+            </a>
+            <a class="item" routerLink="/register" routerLinkActive="active">
+              注册
+            </a>
+          </div>
+  
+          <!-- Show this for logged in users -->
+          <!-- TODO -->
+          <div *showAuthed="true" class="ui item" (click)="showProfileDropdown()">
+            <div class="ui icon top right pointing dropdown">
+              <span>{{ username }}</span>
+              <i class="icon dropdown"></i>
+              <div class="menu">
+                <a class="item" [routerLink]="['/profile', username]" routerLinkActive="active"><i class="user icon"></i>个人主页</a>
+                <a class="item"><i class="setting icon"></i>账号管理</a>
+                <a class="item" (click)="logout()"><i class="power icon"></i>退出</a>
+              </div>
             </div>
           </div>
+          <div class="item">
+            <button class="ui blue button add-entry-modal" (click)="showAddEntryModal()">添加词条</button>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mobile only row">
+    <div class="ui secondary menu container">
+      <a class="nav-logo item" routerLink="/" routerLinkActive="active">
+        <img src="/assets/images/nav_logo.png">
+      </a>
+      <div class="right menu open">
+        <a class="item">
+          <i class="icon bars big"></i>
+        </a>
+      </div>
+    </div>
+    <div class="ui menu vertical">
+      <a class="item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="home icon"></i>
+        首页
+      </a>
+      <a class="item" routerLink="/hot" routerLinkActive="active">
+        <i class="fire icon"></i>
+        热门发现
+      </a>
+      <a class="item" routerLink="/discovery" routerLinkActive="active">
+        <i class="world icon"></i>
+        随便看看
+      </a>
+      <a *showAuthed="false" class="item" routerLink="/login" routerLinkActive="active" (click)="login()">
+        <i class="user circle outline icon"></i>
+        登录
+      </a>
+      <a *showAuthed="false" class="item" routerLink="/register" routerLinkActive="active" (click)="register()">
+        <i class="id card icon"></i>
+        注册
+      </a>
+      <div *showAuthed="true" class="ui item" (click)="showProfileDropdown()">
+        <i class="user circle icon"></i>
+        <div class="ui icon top right pointing dropdown">
+          <span>{{ username }}</span>
+          <i class="icon dropdown"></i>
+          <div class="menu">
+            <a class="item" [routerLink]="['/profile', username]" routerLinkActive="active"><i class="user icon"></i>个人主页</a>
+            <a class="item"><i class="setting icon"></i>账号管理</a>
+            <a class="item" (click)="logout()"><i class="power icon"></i>退出</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui secondary menu bottom container">
+      <div class="item">
+        <div class="ui search search-bar">
+          <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="奇怪的词">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="right menu">
         <div class="item">
           <button class="ui blue button add-entry-modal" (click)="showAddEntryModal()">添加词条</button>
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 <add-entry-modal></add-entry-modal>

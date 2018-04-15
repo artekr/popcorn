@@ -42,6 +42,15 @@ export class HeaderComponent implements OnInit {
     }
 
     this.searchInit();
+
+    $('.right.menu.open').on("click",function(e){
+      e.preventDefault();
+      $('.ui.vertical.menu').toggle();
+    });
+    $('.ui.vertical.menu .item').on("click",function(e){
+      e.preventDefault();
+      $('.ui.vertical.menu').toggle();
+    });
   }
 
   searchInit() {
@@ -105,7 +114,7 @@ export class HeaderComponent implements OnInit {
     if (this.cookieService.check("jwt")) {
       AddEntryComponent.openAddEntryModal();
     } else {
-      this.alertService.error("啊啊","朋友请先登录");
+      this.alertService.error("啊呀","朋友请先登录");
     }
   }
 
@@ -125,4 +134,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  login() {
+    $('.ui.vertical.menu').toggle();
+  }
+
+  register() {
+    $('.ui.vertical.menu').toggle();
+  }
 }

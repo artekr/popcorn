@@ -1,4 +1,4 @@
-#nav-wrapper {
+/* #nav-wrapper {
     background-color: #fff;
     box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
 }
@@ -24,9 +24,39 @@
 
 #nav-wrapper a.nav-logo {
     padding: 0px;
+} */
+
+.ui.grid>.row {
+    padding: 1rem 0 0 0;
 }
 
-.search-bar {
+.nav-wrapper {
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
+}
+
+.nav-wrapper .ui.secondary.menu {
+    height: 56px;
+    align-items: center;
+    padding: 0 8px;
+    margin-bottom: 0rem;
+}
+
+.nav-wrapper a.item {
+    background-color: transparent !important;
+    color: #8590a6 !important;
+}
+
+.nav-wrapper a:hover {
+    background-color: transparent !important;
+}
+
+.nav-wrapper a.item.active {
+    background-color: transparent !important;
+    color: #212121 !important;
+}
+
+.computer.only .search-bar {
     height: 32px;
     /* width: 50%; */
     margin: 0px 25px;
@@ -34,4 +64,52 @@
 
 .ui.button.add-entry-modal {
     padding: .65em 1em .65em !important;
+}
+
+.ui.menu.vertical {
+    padding: 0 8px;
+    width: 100%;
+    display: none;
+    margin: 0rem;
+}
+
+.ui.menu.vertical .item {
+    line-height: 1.3;
+    font-size: 1.2em;
+}
+
+.ui.menu.vertical .item>i.icon {
+    float: left;
+    padding-right: 25px;
+}
+
+.ui.menu.bottom {
+    margin: 0;
+}
+
+.ui.menu.bottom .item {
+    padding: 0;
+}
+
+.mobile.only .ui.divider {
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .nav-wrapper .mobile.only {
+        display: block;
+    }
+    .nav-wrapper .computer.only {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .nav-wrapper .mobile.only {
+        display: none;
+    }
+    .nav-wrapper .computer.only {
+        visibility: visible;
+    }
+
 }
